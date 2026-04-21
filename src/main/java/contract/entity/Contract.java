@@ -9,9 +9,8 @@ public class Contract {
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dataset_id")// Specifies the actual FK column name
+    @ManyToOne()
+    @JoinColumn(name = "dataset_id")
     private Dataset datasetId;
     private int version;
     @Column (updatable = false)

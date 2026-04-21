@@ -14,11 +14,12 @@ public class Dataset {
     private String name;
     @Enumerated
     private FileType fileType;
-
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User userId;
+    @Column(updatable = false)
     private LocalDateTime createdAt;
+
     public Dataset() {
 
     }
@@ -50,7 +51,10 @@ public class Dataset {
     @PrePersist
     public void setCreatedAt() {
         this.createdAt = LocalDateTime.now();
+    }
 
+    public User getUserId() {
+        return userId;
     }
 
 }

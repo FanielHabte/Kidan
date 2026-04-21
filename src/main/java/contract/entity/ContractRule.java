@@ -1,10 +1,7 @@
 package contract.entity;
 
 import contract.enums.RuleType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -12,24 +9,60 @@ import java.time.LocalDateTime;
 public class ContractRule {
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private String ruleId;
-
-    private String contractId;
+    private String id;
+    @OneToOne
+    @JoinColumn (name = "contract_id")
+    private Contract contractId;
     private RuleType ruleType;
     private String ruleConfig;
     private boolean isRequired;
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     public ContractRule() {
 
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public Contract getContractId() {
+        return contractId;
+    }
+
+    public RuleType getRuleType() {
+        return ruleType;
+    }
+
+    public void setRuleType(RuleType ruleType) {
+        this.ruleType = ruleType;
+    }
+
+    public String getRuleConfig() {
+        return ruleConfig;
+    }
+
+    public void setRuleConfig(String ruleConfig) {
+        this.ruleConfig = ruleConfig;
+    }
+
+    public boolean isRequired() {
+        return isRequired;
+    }
+
+    public void setRequired(boolean required) {
+        isRequired = required;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    @PrePersist
+    public void setCreatedAt() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
 
-//•	id (UUID, PK)
-//•	contract_id (UUID, FK → contracts.id)
-//•	rule_type (enum: PageCountRule, SchemaRule, KeywordRule, etc.)
-//•	rule_config (jsonb) — Stores parameters like {"min_pages": 10}
-//•	required (boolean) — true for blocking rules, false for warnings
-//•	created_at (timestamp)
+
