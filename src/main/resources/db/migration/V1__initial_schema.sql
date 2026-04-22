@@ -63,7 +63,7 @@ CREATE INDEX idx_submission_dataset ON inlet.submission(dataset_id);
 CREATE INDEX idx_submission_user ON inlet.submission(user_id);
 
 -- Verity schema tables
-CREATE TABLE verity.pipeline_run (
+CREATE TABLE spectra.pipeline_run (
     id VARCHAR(255) PRIMARY KEY,
     submission_id VARCHAR(255) NOT NULL,
     health_score INTEGER NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE verity.rule_result (
     result VARCHAR(50) NOT NULL,
     detail TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL,
-    FOREIGN KEY (pipeline_run_id) REFERENCES verity.pipeline_run(id),
+    FOREIGN KEY (pipeline_run_id) REFERENCES spectra.pipeline_run(id),
     FOREIGN KEY (contract_rule_id) REFERENCES guardian.contract_rule(id)
 );
 
@@ -93,7 +93,7 @@ CREATE TABLE aether.embedding (
     submission_id VARCHAR(255) NOT NULL,
     chunk_text TEXT NOT NULL,
     chunk_index INTEGER NOT NULL,
-    embedding vector(1536) NOT NULL,
+    embedding VECTOR(1536) NOT NULL,
     meta_data TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL
 );

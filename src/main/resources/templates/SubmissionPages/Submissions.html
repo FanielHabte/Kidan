@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+
+        <div>
+            <h1> Submissions </h1>
+            <form>
+                <button> New Submission </button>
+            </form>
+        </div>
+
+        <div>
+            <form>
+                <button> All datasets </button>
+            </form>
+            <form>
+                <button> All statuses </button>
+            </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>File</th> <th>Dataset</th> <th>Health</th> <th>Status</th> <th>Submission date</th>
+            </tr>
+            <tr th:each = "submission : ${submissionsList}">
+                <td th:text = "${submission.name}"></td>
+                <td th:text = "${submission.fileType}"></td>
+                <td th:text = "${submission.isActive}"></td>
+                <td th:text = "${submission.updatedAt}"></td>
+            </tr>
+        </table>
+
+    </body>
+
+</html>
