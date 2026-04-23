@@ -2,12 +2,16 @@ package io.kidan.nexus.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table (catalog = "kidan", schema = "nexus")
-public class User {
+public class User implements UserDetails {
     @Id @GeneratedValue (strategy = GenerationType.UUID)
     private String id;
     @Email (message = "Email not formatted correctly") @Column(nullable = false, unique = true)
@@ -40,6 +44,21 @@ public class User {
         this.updatedAt = LocalDateTime.now();
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
     public String getId() {
         return id;
     }
@@ -54,10 +73,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {

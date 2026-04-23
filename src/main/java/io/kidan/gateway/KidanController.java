@@ -1,4 +1,4 @@
-package io.kidan.guardian.controller;
+package io.kidan.gateway;
 
 import io.kidan.guardian.service.GuardianService;
 import org.springframework.stereotype.Controller;
@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class GuardianController {
+public class KidanController {
 
     private final GuardianService guardianService;
 
-    GuardianController (GuardianService guardianService) {
+    KidanController (GuardianService guardianService) {
         this.guardianService = guardianService;
     }
 
@@ -21,5 +21,11 @@ public class GuardianController {
         return "GuardianPages/Datasets";
     }
 
+    @GetMapping ("/signup")
+    public String signUpPage (Model model) {
+        model.addAttribute("datasetList",guardianService.getAllDataSets());
+
+        return "NexusPages/SignUp";
+    }
 
 }
