@@ -14,40 +14,22 @@ body {
     padding: 0;
 }
 
-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px;
-}
-
-header p {
-    font-size: 16px;
-    font-weight: 700;
-}
-
-#logo p {
-    padding: 12px;
-    background: #0f6b58;
-    color: #f0ede8;
-    border-radius: 12px;
-}
-
-#signup-header {
+#login-header {
     text-align: center;
 }
 
-#signup-body {
+#login-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60vh;
+    gap: 25px;
     align-items: center;
     line-height: 1.5;
     color: #1a1a1a;
 }
 
-#signup-form {
+#login-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -55,7 +37,7 @@ header p {
     max-width: 260px;
 }
 
-#signup-form input {
+#login-form input {
     border: none;
     border-bottom: 2px solid #d0d0d0;
     width: 100%;
@@ -64,15 +46,14 @@ header p {
     font-size: 16px;
 }
 
-#signup-form input:focus {
+#login-form input:focus {
     outline: none;
     border-bottom-color: #0f6b58;
 }
 
-#signup-form button {
+#login-form button {
     background: #0f6b58;
     color: #f0ede8;
-    margin-top: 20px;
     border: none;
     padding: 10px;
     width: 100%;
@@ -82,11 +63,37 @@ header p {
     cursor: pointer;
 }
 
-#signup-form button:active {
+#login-form button:active {
     box-shadow: 0 0 #0d5a4a;
     transform: translateY(2px);
 }
 
 button:hover {
     filter: brightness(1.1);
+}
+
+#login-separator {
+    width: 40%;
+    border: none;
+    border-top: 1px solid #d0d0d0;
+    margin-top: 15px;
+}
+
+#login-separator legend {
+    text-align: center;
+    padding: 0 10px;
+    font-size: 14px;
+    color: gray;
+}
+
+#login-signup-option {
+    color: gray;
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+#login-signup-option a {
+    color: #0f6b58;
+    font-weight: 700;
+    text-decoration: none;
 }

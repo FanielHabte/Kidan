@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="/style/nexus/login.css">
+        <link rel="stylesheet" href="/style/fragments/header.css">
+    </head>
+
+    <body>
+
+        <div th:replace="~{fragments/header :: header-fragment}"> </div>
+
+        <div id="login-body">
+
+            <div id="login-header">
+                <h2> Welcome back </h2>
+                <p> Login to continue managing your datasets </p>
+            </div>
+
+            <form id="login-form" method="POST" th:action = "@{/login}">
+                <div th:if = "${param.error}">
+                    Ivalid ussername or password.
+                </div>
+                <label>
+                    <span> Email </span><br>
+                    <input type="email" name="username" placeholder="john@example.com">
+                </label>
+                <label>
+                    <span> Password </span><br>
+                    <input type="password" name="password" placeholder="Enter your password">
+                </label>
+                <span> Forget password? </span>
+                <button type="submit"> Log in </button>
+            </form>
+
+            <fieldset id="login-separator">
+                <legend> or </legend>
+            </fieldset>
+
+            <div id="login-signup-option">
+                <p> Don't have an account? <a href="/signup"> Sign up </a> </p>
+            </div>
+
+        </div>
+
+    </body>
+
+    <footer>
+
+    </footer>
+
+</html>

@@ -22,19 +22,29 @@ ext {
 }
 
 dependencies {
+	// Core
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-//	implementation 'org.springframework.ai:spring-ai-advisors-vector-store'
+	implementation 'org.springframework.webflow:spring-webflow'
 	runtimeOnly    'org.postgresql:postgresql'
-	implementation 'org.flywaydb:flyway-core:12.4.0'
-	implementation 'org.flywaydb:flyway-database-postgresql:12.4.0'
+	//Flyway
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-database-postgresql'
+	// Spring AI
+//	implementation 'org.springframework.ai:spring-ai-advisors-vector-store'
 //	implementation 'org.springframework.ai:spring-ai-starter-model-google-genai'
 //	implementation 'org.springframework.ai:spring-ai-starter-model-google-genai-embedding'
 //	implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
+	//Redis
+	implementation 'org.springframework.session:spring-session-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.data:spring-data-redis'
+	implementation 'org.springframework.boot:spring-boot-docker-compose'
+	//Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly    'org.junit.platform:junit-platform-launcher'
