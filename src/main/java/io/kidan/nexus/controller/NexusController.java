@@ -31,6 +31,12 @@ public class NexusController {
         return "nexus/signup";
     }
 
+    @GetMapping("/team-management")
+    public String teamManagement () {
+
+        return "nexus/team-management";
+    }
+
     @PostMapping("/signup/create-user")
     public String createNewUser (@ModelAttribute User user) {
         nexusService.createUser(user);

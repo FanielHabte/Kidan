@@ -27,7 +27,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                     .loginPage("/login")
-                    .defaultSuccessUrl("/datasets", false)
+                    .defaultSuccessUrl("/", false)
                     .permitAll()
             );
         return http.build();

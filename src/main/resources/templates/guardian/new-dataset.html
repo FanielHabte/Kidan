@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>New dataset</title>
+    <style>
+        @import "../../static/style/variables.css";
+        .nd-body-container {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            height: 70vh;
+            padding: 0;
+            margin: 0;
+        }
+        .nd-form-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-2xl);
+        }
+        .nd-form-input-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-2xl);
+            background-color: var(--color-bg-sidebar);
+            padding: 30px;
+            border: 2px solid black;
+        }
+        .nd-form-input-name input {
+            height: 30px;
+            width: 200px;
+        }
 
-</body>
+        .nd-form-input-filetype {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-sm);
+        }
+
+        .nd-form-input-filetype input {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            height: 35px;
+            border-radius: 12px;
+            width: 100%;
+        }
+
+        .nd-form-action-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .nd-form-action-container button {
+            width: 100px;
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+
+    </style>
+</head>
+    <div class="nd-body-container">
+        <div th:replace="~{fragments/navigation::header-nav-bar}"> </div>
+        <div class="nd-content-form-container">
+            <div class="nd-header">
+                <h1>Create dataset</h1>
+                <p>First, let's define what kind of data you'll be working with</p>
+            </div>
+            <form class= "nd-form-container">
+                <div class="nd-form-input-container">
+                    <label class="nd-form-input-name">
+                        <span>Dataset name: </span>
+                        <input name="name">
+                    </label>
+                    <label class="nd-form-input-filetype">
+                        <input name="name" type="button" value="CSV">
+                        <input name="name" type="button" value="PDF">
+                        <input name="name" type="button" value="DOCX">
+                    </label>
+                </div>
+                <div class="nd-form-action-container">
+                    <button type="submit" class="nd-form-action-continue">Cancel</button>
+                    <button type="submit" class="nd-form-action-continue">Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </html>

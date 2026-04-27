@@ -1,0 +1,14 @@
+@import "../variables.css";
+
+.home-body-container {
+    display: flex;
+    gap: var(--spacing-md);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+}
+
+.home-body {
+    background-color: var(--color-bg-base);
+    padding: var(--spacing-xl);
+}
