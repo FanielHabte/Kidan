@@ -17,6 +17,7 @@ public class GuardianController {
     @GetMapping ("/datasets")
     public String listDatasets (Model model) {
         model.addAttribute("datasetList",guardianService.getAllDataSets());
+
         return "guardian/datasets";
     }
 
