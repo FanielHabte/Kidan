@@ -29,7 +29,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-	implementation 'org.springframework.webflow:spring-webflow'
 	runtimeOnly    'org.postgresql:postgresql'
 	//Flyway
 	implementation 'org.flywaydb:flyway-core'

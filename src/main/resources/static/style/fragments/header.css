@@ -1,18 +1,20 @@
+@import "/static/style/variables.css";
+
 header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 15px;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
 }
 
 header p {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
 }
 
 #logo p {
-    padding: 12px;
-    background: #0f6b58;
-    color: #f0ede8;
-    border-radius: 12px;
+    padding: var(--font-size-xs);
+    background: var(--color-primary);
+    color: var(--color-badge-bg);
+    border-radius: var(--radius-lg);
 }

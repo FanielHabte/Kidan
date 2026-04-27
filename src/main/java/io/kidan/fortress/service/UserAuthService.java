@@ -31,15 +31,13 @@ public class UserAuthService  implements UserDetailsService {
 
     public Optional<User> AuthenticatedUser () throws UsernameNotFoundException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserEmail = authentication.getName();
             return nexusService.getUserByEmail(currentUserEmail);
         }
         else {
-            throw new UsernameNotFoundException("Authenticated User not found");
+            throw new UsernameNotFoundException("");
         }
-
     }
 
 }
