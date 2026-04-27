@@ -30,15 +30,21 @@ public class Contract {
         this.createdAt = localDateTime;
         this.updatedAt = localDateTime;
         this.isActive = true;
+        this.version = 1;
     }
 
     @PreUpdate
     private void setUpdatedAt() {
         this.updatedAt = LocalDateTime.now();
+        this.version = version + 1;
     }
 
     public String getContractId() {
         return id;
+    }
+
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
     }
 
     public Dataset getDataset() {

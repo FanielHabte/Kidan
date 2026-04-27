@@ -1,9 +1,12 @@
 package io.kidan.guardian.service;
 
+import io.kidan.guardian.entity.Contract;
+import io.kidan.guardian.entity.ContractRule;
 import io.kidan.guardian.entity.Dataset;
 import io.kidan.guardian.repository.ContractRepository;
 import io.kidan.guardian.repository.ContractRuleRepository;
 import io.kidan.guardian.repository.DatasetRepository;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +31,12 @@ public class GuardianService {
         return datasetRepository.findAll();
     }
 
-    public void createDataset (Dataset newDataset) {
-        datasetRepository.save(newDataset);
+    public void createDatasetAndContract (@NonNull Dataset dataset, @NonNull Contract contract, @NonNull ContractRule contractRule) {
+        datasetRepository.save(dataset);
+        contract.setDataset(dataset);
+        contractRepository.save(contract);
+        contractRule.setContract(contract);
+        contractRuleRepository.save(contractRule);
     }
 
 }

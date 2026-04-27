@@ -31,7 +31,6 @@ public class Dataset {
     private LocalDateTime updatedAt;
 
     public Dataset() {
-
     }
 
     @PrePersist

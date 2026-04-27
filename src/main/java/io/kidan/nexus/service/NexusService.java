@@ -5,6 +5,8 @@ import io.kidan.nexus.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class NexusService {
 
@@ -24,12 +26,15 @@ public class NexusService {
         user.setPassword(encodePassword(password));
 
         userRepository.save(user);
-
     }
 
     private String encodePassword (String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode(password);
+    }
+    
+    public Optional<User> getUserByEmail (String email) {
+        return userRepository.findByEmail(email);
     }
 
 }
