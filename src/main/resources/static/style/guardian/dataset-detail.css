@@ -1,0 +1,349 @@
+@import "../variables.css";
+
+/* Page shell */
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--color-bg-base);
+}
+
+body,
+body * {
+    box-sizing: border-box;
+}
+
+.dataset-detail-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    width: 80%;
+    min-height: 100vh;
+    padding: var(--spacing-2xl);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-base);
+    line-height: var(--line-height-normal);
+}
+
+/* Header */
+.dd-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 800px;
+}
+
+.dd-header > div {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    min-width: 0;
+}
+
+.dd-header h1,
+.dd-header p,
+.dd-header form,
+.dd-kpis h5,
+.dd-visualization h4,
+.dd-visualization p,
+.dd-recent-submissions h4,
+.dd-recent-submissions p {
+    margin: 0;
+}
+
+.dd-header h1 {
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
+
+.dd-header > div > p {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    min-height: 30px;
+    padding: 0 var(--spacing-md);
+    background-color: var(--color-bg-sidebar);
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+}
+
+.dd-header button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    min-height: 44px;
+    padding: 0 var(--spacing-lg);
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.dd-header button:hover {
+    background-color: var(--color-bg-hover);
+    border-color: var(--color-primary);
+}
+
+/* KPI cards */
+.dd-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 800px;
+}
+
+.dd-kpis > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    min-height: 112px;
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-sidebar);
+    border-radius: var(--radius-lg);
+}
+
+.dd-kpis h5 {
+    max-width: 112px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-secondary);
+}
+
+.dd-kpi-number {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
+
+.dd-kpi-avg-health .dd-kpi-number {
+    color: #1f7a1f;
+}
+
+/* Shared cards */
+.dd-visualization,
+.dd-recent-submissions {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Health trend */
+.dd-visualization {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+}
+
+.dd-visualization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.dd-visualization h4,
+.dd-recent-submissions h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.dd-visualization p {
+    max-width: 120px;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-tight);
+}
+
+.dd-visualization-chart {
+    height: 72px;
+    border-radius: var(--radius-md);
+    background:
+            linear-gradient(to top, #5ac8a3 0 76%, transparent 76% 100%) 0 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 70%, transparent 70% 100%) 23px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 74%, transparent 74% 100%) 46px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 82%, transparent 82% 100%) 69px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #f7c773 0 58%, transparent 58% 100%) 92px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 78%, transparent 78% 100%) 115px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 70%, transparent 70% 100%) 138px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 76%, transparent 76% 100%) 161px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 74%, transparent 74% 100%) 184px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 80%, transparent 80% 100%) 207px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 82%, transparent 82% 100%) 230px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #ef8f8f 0 44%, transparent 44% 100%) 253px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 70%, transparent 70% 100%) 276px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 73%, transparent 73% 100%) 299px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 76%, transparent 76% 100%) 322px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 82%, transparent 82% 100%) 345px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 71%, transparent 71% 100%) 368px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #f7c773 0 58%, transparent 58% 100%) 391px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 78%, transparent 78% 100%) 414px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 82%, transparent 82% 100%) 437px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 70%, transparent 70% 100%) 460px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 77%, transparent 77% 100%) 483px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 84%, transparent 84% 100%) 506px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 74%, transparent 74% 100%) 529px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 72%, transparent 72% 100%) 552px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 74%, transparent 74% 100%) 575px 100% / 18px 100% no-repeat,
+            linear-gradient(to top, #5ac8a3 0 80%, transparent 80% 100%) 598px 100% / 18px 100% no-repeat;
+}
+
+/* Recent submissions */
+.dd-recent-submissions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+}
+
+.dd-recent-submissions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.dd-recent-submissions-header > p {
+    max-width: 48px;
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
+    cursor: pointer;
+}
+
+.dd-recent-submission-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.dd-recent-submission {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.dd-recent-submission:first-child {
+    padding-top: 0;
+}
+
+.dd-recent-submission:last-child {
+    border-bottom: none;
+}
+
+.dd-recent-submission-name-time {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    min-width: 0;
+}
+
+.dd-recent-submission-name-time p:first-child {
+    overflow: hidden;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dd-recent-submission-name-time p:last-child {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.dd-recent-submission > p:nth-child(2) {
+    color: #1f7a1f;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+.dd-recent-submission > p:nth-child(3) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    min-height: 28px;
+    padding: 0 var(--spacing-md);
+    background-color: #e5f2dc;
+    border-radius: var(--radius-lg);
+    color: #1f5f1f;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+    }
+
+    .dataset-detail-page {
+        width: 100%;
+        padding: var(--spacing-lg);
+    }
+
+    .dd-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dd-header form,
+    .dd-header button {
+        width: 100%;
+    }
+
+    .dd-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dd-recent-submission {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .dd-recent-submission > p:nth-child(2),
+    .dd-recent-submission > p:nth-child(3) {
+        justify-self: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .dd-header > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .dd-kpis {
+        grid-template-columns: 1fr;
+    }
+}

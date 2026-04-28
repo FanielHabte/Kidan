@@ -29,6 +29,13 @@ public class GuardianController {
         return "guardian/datasets";
     }
 
+    @GetMapping ("/datasets/detail")
+    public String datasetDetail (Model model) {
+        model.addAttribute("datasetList", guardianService.getAllDataSets());
+
+        return "guardian/dataset-detail";
+    }
+
     @GetMapping("/datasets/new-dataset")
     public String newDataSetPage (Model model) {
         model.addAttribute("formCreatedDataset", new Dataset());

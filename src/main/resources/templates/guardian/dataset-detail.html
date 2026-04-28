@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Detail</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/guardian/dataset-detail.css">
+</head>
+<body>
+    <div th:replace="~{fragments/navigation::header-nav-bar}"> </div>
+    <main class="dataset-detail-page">
+        <section class="dd-header">
+            <div>
+                <h1>Dataset Name</h1>
+                <p>PDF</p>
+            </div>
+            <form>
+                <button>Submit file</button>
+            </form>
+        </section>
+
+        <section class="dd-kpis">
+            <div class="dd-kpi-avg-health">
+                <h5>Avg health</h5>
+                <span class="dd-kpi-number">75.5%</span>
+            </div>
+            <div class="dd-kpi-submissions">
+                <h5>Submissions (30d)</h5>
+                <span class="dd-kpi-number">12</span>
+            </div>
+            <div class="dd-kpi-rules">
+                <h5>Rules</h5>
+                <span class="dd-kpi-number">3</span>
+            </div>
+            <div class="dd-kpi-providers">
+                <h5>Providers</h5>
+                <span class="dd-kpi-number">5</span>
+            </div>
+        </section>
+
+        <section class="dd-visualization">
+            <div class="dd-visualization-header">
+                <h4>Health trend</h4>
+                <p>Last 30 submissions</p>
+            </div>
+            <div class="dd-visualization-chart">
+            </div>
+        </section>
+
+        <section class="dd-recent-submissions">
+            <div class="dd-recent-submissions-header">
+                <h4>Recent submissions</h4>
+                <p>See all</p>
+            </div>
+            <div class="dd-recent-submission-list">
+                <div class="dd-recent-submission">
+                    <div class="dd-recent-submission-name-time">
+                        <p>file name</p>
+                        <p>username*4mins ago</p>
+                    </div>
+                    <p>98</p> <p>Passed</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
