@@ -1,6 +1,0 @@
-@import "../variables.css";
-
-.dataset-page-container {
-    display: flex;
-    gap: var(--spacing-lg);
-}

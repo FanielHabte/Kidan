@@ -1,0 +1,197 @@
+@import "../variables.css";
+
+/* Page layout */
+.review-resources-page,
+.review-resources-page * {
+    box-sizing: border-box;
+}
+
+.review-resources-page {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+.rr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    width: 80%;
+    min-height: 100vh;
+    padding: var(--spacing-2xl);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-base);
+    line-height: var(--line-height-normal);
+}
+
+.rr-page-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Header */
+.rr-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.rr-header h1,
+.rr-header p,
+.rr-card h3,
+.rr-card p,
+.rr-success-message p {
+    margin: 0;
+}
+
+.rr-header h1 {
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
+
+.rr-header p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Review card */
+.rr-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-2xl);
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.rr-card-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.rr-card-section + .rr-card-section {
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.rr-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.rr-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.rr-detail-list p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.rr-detail-list strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Success message */
+.rr-success-message {
+    padding: var(--spacing-lg);
+    background-color: #e6f3f0;
+    border: 1px solid rgba(15, 107, 88, 0.12);
+    border-radius: var(--radius-md);
+}
+
+.rr-success-message p {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-hover);
+}
+
+/* Actions */
+.rr-form-action-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.rr-form {
+    margin: 0;
+}
+
+.rr-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    min-height: 44px;
+    padding: 0 var(--spacing-lg);
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.rr-button-secondary {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+}
+
+.rr-button-secondary:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.rr-button-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 2px 0 var(--color-primary-hover);
+}
+
+.rr-button-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.rr-button-primary:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rr-container {
+        width: 100%;
+        padding: var(--spacing-lg);
+    }
+
+    .rr-card {
+        padding: var(--spacing-xl);
+    }
+
+    .rr-form-action-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .rr-form,
+    .rr-button {
+        width: 100%;
+    }
+}

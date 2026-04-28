@@ -1,104 +1,293 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-        <p> Datasets / New contract </p>
+@import "../variables.css";
 
-        <div>
-            <h2> New contract</h2>
-            <form>
-                <button> Publish </button>
-            </form>
-        </div>
 
-        <!-- Dataset definition section -->
-        <div>
-            <h3> Basics </h3>
-            <label>
-                Name <br>
-                <input name = "Name" placeholder="Your dataset name">
-            </label>
-            <div>
-                <label>
-                    <input type="button" name="fileType" value="PDF">
-                </label>
-                <label>
-                    <input type="button" name="fileType" value="CSV" checked>
-                </label>
-                <label>
-                    <input type="button" name="fileType" value="DOCX">
-                </label>
-            </div>
-        </div>
+/* Page layout */
+.new-contract-rule-page,
+.new-contract-rule-page * {
+    box-sizing: border-box;
+}
 
-        <p> --------------------------------------------------------------------------------------- </p>
-        <!-- Contracts / Rules [CSV] -->
-        <div>
-            <h3> Rules </h3>
-            <div>
-                <!-- Structural [CSV] -->
-                <div>
-                    <h4> Structural </h4>
-                    <label>
-                        Column names (comma-separated):
-                        <input name="columnNames" placeholder="column1, column2">
-                    </label> <br>
-                    <label>
-                        Delimiter type:
-                        <select name = "dataType">
-                            <option value="comma"> , </option>
-                            <option value="pipe"> | </option>
-                            <option value="semicolon"> ; </option>
-                        </select>
-                    </label>
-                </div>
+.new-contract-rule-page {
+    display: flex;
+    gap: var(--spacing-xl);
+}
 
-                <!-- Semantic / Completeness / Generic [CSV] -->
-                <div>
-                    <div>
-                        <h4> Semantic / Completeness / Generic </h4>
-                    </div>
+.new-contract-rule-page-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    width: 80%;
+    min-height: 100vh;
+    padding: var(--spacing-2xl);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-base);
+    line-height: var(--line-height-normal);
+}
 
-                    <form>
-                        <div>
-                            <span> [Column name] </span>
-                            <label>
-                                Data type:
-                                <select name = "dataType">
-                                    <option value="int"> Integer </option>
-                                    <option value="decimal"> Decimal </option>
-                                    <option value="text"> Text </option>
-                                </select>
-                            </label>
+.nc-page-section,
+.nc-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    width: 100%;
+    max-width: 800px;
+}
 
-                            <label >
-                                Required:
-                                <input type="checkbox" name="isRequired">
-                            </label>
+/* Header */
+.nc-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
 
-                            <label>
-                                Unique:
-                                <input type="checkbox" name="isUnique">
-                            </label>
+.nc-header h1,
+.nc-header p,
+.nc-validation-info-message p,
+.nc-dataset-detail-container p,
+.nc-form-card h3 {
+    margin: 0;
+}
 
-                            <label>
-                                Range (min-max):
-                                <input name="rangeMin" type="number" placeholder="Min" style="width: 70px">
-                                <input name="rangeMax" type="number" placeholder="Max" style="width: 70px">
-                            </label>
+.nc-header h1 {
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
 
-                            <label>
-                                Allowed values (comma-separated):
-                                <input name="columnRange" placeholder="value1, value2, value3">
-                            </label>
-                        </div>
-                    </form>
-                </div>
+.nc-header p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
 
-            </div>
-        </div>
-    </body>
-</html>
+/* Info message */
+.nc-validation-info-message {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-lg);
+    background-color: #fec7c7;
+    border: 1px solid rgb(104 46 46 / 0.73);
+    border-radius: var(--radius-md);
+}
+
+.nc-validation-info-message p {
+    color: #92400e;
+}
+
+.nc-validation-info-message p:first-child {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.nc-validation-info-message p:last-child {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-normal);
+}
+
+/* Dataset summary */
+.nc-dataset-detail-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    background-color: #e6f3f0;
+    border: 1px solid rgba(15, 107, 88, 0.12);
+    border-radius: var(--radius-md);
+}
+
+.nc-dataset-detail-container > p {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary-hover);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nc-dataset-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nc-dataset-detail p:first-child {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.nc-dataset-detail p:last-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Form card */
+.nc-form-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-2xl);
+    background-color: var(--color-bg-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.nc-form-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.nc-form-section,
+.nc-form-field,
+.nc-form-column-validation {
+    display: flex;
+    flex-direction: column;
+}
+
+.nc-form-section {
+    gap: var(--spacing-md);
+}
+
+.nc-form-column-validations-container {
+    gap: var(--spacing-lg);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.nc-form-column-validation {
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-sidebar);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+}
+
+/* Fields */
+.nc-form-field {
+    gap: var(--spacing-sm);
+    min-width: 0;
+}
+
+.nc-field-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+.nc-required-star {
+    color: red;
+    font-weight: var(--font-weight-bold);
+}
+
+.nc-control {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 0 var(--spacing-md);
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-sm);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.nc-control::placeholder {
+    color: var(--color-text-tertiary);
+}
+
+.nc-control:hover {
+    border-color: var(--color-primary);
+}
+
+.nc-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(15, 107, 88, 0.12);
+}
+
+select.nc-control {
+    cursor: pointer;
+}
+
+/* Column validation layout */
+.nc-field-grid,
+.nc-checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.nc-checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    cursor: pointer;
+}
+
+.nc-checkbox-field input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+.nc-form-action-container {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.nc-button {
+    min-width: 140px;
+    height: 44px;
+    padding: 0 var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-medium);
+    font: inherit;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+}
+
+.nc-button-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+
+.nc-button-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+}
+
+.nc-button-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.nc-button-secondary:hover {
+    background-color: var(--color-bg-hover);
+}

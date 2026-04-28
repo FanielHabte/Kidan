@@ -3,88 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>New dataset</title>
-    <style>
-        @import "../../static/style/variables.css";
-        .nd-body-container {
-            display: flex;
-            gap: var(--spacing-lg);
-            justify-content: center;
-            align-items: center;
-            border: 2px solid black;
-            height: 70vh;
-            padding: 0;
-            margin: 0;
-        }
-        .nd-form-container {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-2xl);
-        }
-        .nd-form-input-container {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-2xl);
-            background-color: var(--color-bg-sidebar);
-            padding: 30px;
-            border: 2px solid black;
-        }
-        .nd-form-input-name input {
-            height: 30px;
-            width: 200px;
-        }
-
-        .nd-form-input-filetype {
-            display: flex;
-            justify-content: space-between;
-            gap: var(--spacing-sm);
-        }
-
-        .nd-form-input-filetype input {
-            display: block;
-            justify-content: center;
-            align-items: center;
-            height: 35px;
-            border-radius: 12px;
-            width: 100%;
-        }
-
-        .nd-form-action-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .nd-form-action-container button {
-            width: 100px;
-            padding: 10px;
-            border-radius: 12px;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/fragments/new-dataset-progress-bar.css">
+    <link rel="stylesheet" href="/style/guardian/new-dataset.css">
 </head>
-    <div class="nd-body-container">
-        <div th:replace="~{fragments/navigation::header-nav-bar}"> </div>
-        <div class="nd-content-form-container">
-            <div class="nd-header">
-                <h1>Create dataset</h1>
-                <p>First, let's define what kind of data you'll be working with</p>
-            </div>
-            <form class= "nd-form-container">
-                <div class="nd-form-input-container">
-                    <label class="nd-form-input-name">
-                        <span>Dataset name: </span>
-                        <input name="name">
-                    </label>
-                    <label class="nd-form-input-filetype">
-                        <input name="name" type="button" value="CSV">
-                        <input name="name" type="button" value="PDF">
-                        <input name="name" type="button" value="DOCX">
-                    </label>
-                </div>
-                <div class="nd-form-action-container">
-                    <button type="submit" class="nd-form-action-continue">Cancel</button>
-                    <button type="submit" class="nd-form-action-continue">Continue</button>
-                </div>
-            </form>
+<body>
+    <main class="new-dataset-page">
+        <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
+
+        <div class="new-dataset-page-content-container">
+            <div th:replace="~{fragments/new-dataset-progress-bar :: nd-progress-bar}"></div>
+
+            <section class="nd-content-form-container">
+                <header class="nd-header">
+                    <h1>Create dataset</h1>
+                    <p>First, let's define what kind of data you'll be working with.</p>
+                </header>
+
+                <form class="nd-form-container" method="post" action="/datasets">
+                    <div class="nd-form-card">
+                        <div class="nd-field">
+                            <label class="nd-field-label" for="dataset-name">Dataset name</label>
+                            <input
+                                    id="dataset-name"
+                                    class="nd-text-input"
+                                    name="name"
+                                    type="text"
+                                    placeholder="e.g., Employee Master Data"
+                            >
+                        </div>
+
+                        <fieldset class="nd-field">
+                            <legend class="nd-field-label">File type</legend>
+
+                            <div class="nd-filetype-options">
+                                <label class="nd-filetype-option">
+                                    <input type="radio" name="fileType" value="CSV" checked>
+                                    <span class="nd-filetype-label">CSV</span>
+                                </label>
+
+                                <label class="nd-filetype-option">
+                                    <input type="radio" name="fileType" value="PDF">
+                                    <span class="nd-filetype-label">PDF</span>
+                                </label>
+
+                                <label class="nd-filetype-option">
+                                    <input type="radio" name="fileType" value="DOCX">
+                                    <span class="nd-filetype-label">DOCX</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="nd-form-action-container">
+                        <a class="nd-button nd-button-secondary" href="/datasets">Cancel</a>
+                        <button type="submit" class="nd-button nd-button-primary">Continue</button>
+                    </div>
+                </form>
+            </section>
         </div>
-    </div>
-</html>
+
+    </main>
+</body>

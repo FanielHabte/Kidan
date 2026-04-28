@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class GuardianController {
 
@@ -48,17 +45,17 @@ public class GuardianController {
 
     @GetMapping("datasets/review-resource")
     public String newContractCreated(Model model) {
-        ArrayList <Object> resources =
-                new ArrayList <> (
-                        List.of (
-                                session.getAttribute("newDataset"),
-                                session.getAttribute("newContract")
-                            )
-                        );
-
-        session.setAttribute("allResources", resources);
-        model.addAttribute("resources", resources);
-
+//        ArrayList <Object> resources =
+//                new ArrayList <> (
+//                        List.of (
+//                                session.getAttribute("newDataset"),
+//                                session.getAttribute("newContract")
+//                            )
+//                        );
+//
+//        session.setAttribute("allResources", resources);
+//        model.addAttribute("resources", resources);
+//
         return "guardian/resource-review";
     }
 

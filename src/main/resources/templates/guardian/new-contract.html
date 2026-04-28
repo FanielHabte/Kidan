@@ -2,106 +2,146 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
-        <style>
-
-        </style>
+        <title>New contract</title>
+        <link rel="stylesheet" href="/style/fragments/navigation.css">
+        <link rel="stylesheet" href="/style/fragments/new-dataset-progress-bar.css">
+        <link rel="stylesheet" href="/style/guardian/new-contract.css">
     </head>
     <body>
-        <p> Datasets </p>
+        <main class="new-contract-rule-page">
+            <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
 
-        <div>
-            <h2> New contract</h2>
-            <form>
-                <button> Publish </button>
-            </form>
-        </div>
+            <div class="new-contract-rule-page-content-container">
+                <div th:replace="~{fragments/new-dataset-progress-bar :: nd-progress-bar}"></div>
 
-        <!-- Dataset definition section -->
-        <div>
-            <h3> Basics </h3>
-            <label>
-                Name <br>
-                <input name = "Name" placeholder="Your dataset name">
-            </label>
-            <div>
-                <label>
-                    <input type="button" name="fileType" value="PDF">
-                </label>
-                <label>
-                    <input type="button" name="fileType" value="CSV" checked>
-                </label>
-                <label>
-                    <input type="button" name="fileType" value="DOCX">
-                </label>
-            </div>
-        </div>
+                <section class="nc-page-section">
+                    <header class="nc-header">
+                        <h1>Define validation rules</h1>
+                        <p>Setup rules to ensure data quality</p>
+                    </header>
 
-        <p> --------------------------------------------------------------------------------------- </p>
-        <!-- Contracts / Rules [CSV] -->
-        <div>
-            <h3> Rules </h3>
-            <div>
-                <!-- Structural [CSV] -->
-                <div>
-                    <h4> Structural </h4>
-                    <label>
-                        Column names (comma-separated):
-                        <input name="columnNames" placeholder="column1, column2">
-                    </label> <br>
-                    <label>
-                        Delimiter type:
-                        <select name = "dataType">
-                            <option value="comma"> , </option>
-                            <option value="pipe"> | </option>
-                            <option value="semicolon"> ; </option>
-                        </select>
-                    </label>
-                </div>
-
-                <!-- Semantic / Completeness / Generic [CSV] -->
-                <div>
-                    <div>
-                        <h4> Semantic / Completeness / Generic </h4>
+                    <div class="nc-validation-info-message">
+                        <p>Validation rules required</p>
+                        <p>You must define at least one column validation rule to ensure data quality. Datasets without validation rules cannot be published.</p>
                     </div>
 
-                    <form>
-                        <div>
-                            <span> [Column name] </span>
-                            <label>
-                                Data type:
-                                <select name = "dataType">
-                                    <option value="int"> Integer </option>
-                                    <option value="decimal"> Decimal </option>
-                                    <option value="text"> Text </option>
-                                </select>
-                            </label>
+                    <div class="nc-dataset-detail-container">
+                        <p>Dataset</p>
+                        <div class="nc-dataset-detail">
+                            <p>Name</p>
+                            <p>CSV</p>
+                        </div>
+                    </div>
 
-                            <label >
-                                Required:
-                                <input type="checkbox" name="isRequired">
-                            </label>
+                    <form class="nc-form" method="post" th:action="@{/datasets/new-contract/created}">
+                        <div class="nc-form-card">
+                            <div class="nc-form-section">
+                                <h3>Structural Rules</h3>
 
-                            <label>
-                                Unique:
-                                <input type="checkbox" name="isUnique">
-                            </label>
+                                <div class="nc-form-field">
+                                    <label class="nc-field-label" for="nc-column-names">
+                                        <span class="nc-required-star">*</span>
+                                        Column names
+                                    </label>
+                                    <input
+                                            id="nc-column-names"
+                                            class="nc-control"
+                                            name="columns"
+                                            type="text"
+                                            placeholder="employee_id,first_name,last_name,email"
+                                    >
+                                </div>
 
-                            <label>
-                                Range (min-max):
-                                <input name="rangeMin" type="number" placeholder="Min" style="width: 70px">
-                                <input name="rangeMax" type="number" placeholder="Max" style="width: 70px">
-                            </label>
+                                <div class="nc-form-field">
+                                    <label class="nc-field-label" for="nc-delimiter-type">
+                                        <span class="nc-required-star">*</span>
+                                        Delimiter
+                                    </label>
+                                    <select
+                                            id="nc-delimiter-type"
+                                            class="nc-control"
+                                            name="delimiter"
+                                    >
+                                        <option value="comma">, (comma)</option>
+                                        <option value="pipe">| (pipe)</option>
+                                        <option value="semicolon">; (semicolon)</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                            <label>
-                                Allowed values (comma-separated):
-                                <input name="columnRange" placeholder="value1, value2, value3">
-                            </label>
+                            <div class="nc-form-section nc-form-column-validations-container">
+                                <h3>Column Validations</h3>
+
+                                <div class="nc-form-column-validation">
+                                    <div class="nc-form-field">
+                                        <label class="nc-field-label" for="column-name">
+                                            <span class="nc-required-star">*</span>
+                                            Name
+                                        </label>
+                                        <input
+                                                id="column-name"
+                                                class="nc-control"
+                                                name="columnName"
+                                                type="text"
+                                                placeholder="column name"
+                                        >
+                                    </div>
+
+                                    <div class="nc-field-grid">
+                                        <div class="nc-form-field">
+                                            <label class="nc-field-label" for="column-data-type">
+                                                <span class="nc-required-star">*</span>
+                                                Data type
+                                            </label>
+                                            <select
+                                                    id="column-data-type"
+                                                    class="nc-control"
+                                                    name="dataType"
+                                            >
+                                                <option value="string">Text</option>
+                                                <option value="int">Integer</option>
+                                                <option value="decimal">Decimal</option>
+                                                <option value="email">Email</option>
+                                                <option value="date">Date</option>
+                                                <option value="timestamp">Timestamp</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="nc-form-field">
+                                            <label class="nc-field-label" for="column-format">
+                                                Format / rule
+                                            </label>
+                                            <input
+                                                    id="column-format"
+                                                    class="nc-control"
+                                                    name="formatRule"
+                                                    type="text"
+                                                    placeholder="Optional rule or format"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="nc-checkbox-grid">
+                                        <label class="nc-checkbox-field">
+                                            <input type="checkbox" name="required" value="true">
+                                            <span>Required</span>
+                                        </label>
+
+                                        <label class="nc-checkbox-field">
+                                            <input type="checkbox" name="unique" value="true">
+                                            <span>Unique</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nc-form-action-container">
+                            <a class="nc-button nc-button-secondary" href="/datasets/new-dataset">Back</a>
+                            <button type="submit" class="nc-button nc-button-primary">Review</button>
                         </div>
                     </form>
-                </div>
-
+                </section>
             </div>
-        </div>
+        </main>
     </body>
 </html>

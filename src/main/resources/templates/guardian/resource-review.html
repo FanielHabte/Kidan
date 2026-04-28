@@ -1,10 +1,60 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/fragments/new-dataset-progress-bar.css">
+    <link rel="stylesheet" href="/style/guardian/resource-review.css">
 </head>
 <body>
+<main class="review-resources-page">
+    <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
 
+    <div class="rr-container">
+        <div th:replace="~{fragments/new-dataset-progress-bar :: nd-progress-bar}"></div>
+
+        <section class="rr-page-section">
+            <header class="rr-header">
+                <h1>Review &amp; publish</h1>
+                <p>Review your contract before publishing</p>
+            </header>
+
+            <div class="rr-card">
+                <div class="rr-card-section">
+                    <h3>Dataset</h3>
+
+                    <div class="rr-detail-list">
+                        <p><strong>Name:</strong> placeholder</p>
+                        <p><strong>File type:</strong> placeholder</p>
+                    </div>
+                </div>
+
+                <div class="rr-card-section">
+                    <h3>Rules summary</h3>
+
+                    <div class="rr-detail-list">
+                        <p><strong>Required columns:</strong> ()</p>
+                        <p><strong>Column validations:</strong> 1 column</p>
+                    </div>
+                </div>
+
+                <div class="rr-success-message">
+                    <p>This contract meets data quality requirements and is ready to publish.</p>
+                </div>
+            </div>
+
+            <div class="rr-form-action-container">
+                <a class="rr-button rr-button-secondary" href="/datasets/new-contract">Back</a>
+
+                <form class="rr-form" method="post" th:action="@{/datasets/new-contract/created}">
+                    <button type="submit" class="rr-button rr-button-primary">Publish</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
 </body>
 </html>
