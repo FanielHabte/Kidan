@@ -4,6 +4,7 @@ import io.kidan.guardian.enums.FileType;
 import io.kidan.nexus.entity.User;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
         @Index(name = "idx_dataset_name", columnList = "name")
 })
 
-public class Dataset {
+public class Dataset implements Serializable {
 
     @Id @GeneratedValue (strategy = GenerationType.UUID)
     private String id;

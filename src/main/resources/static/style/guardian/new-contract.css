@@ -1,5 +1,9 @@
 @import "../variables.css";
 
+body {
+    margin: 0;
+    background-color: var(--color-bg-base);
+}
 
 /* Page layout */
 .new-contract-rule-page,
@@ -172,8 +176,36 @@
     gap: var(--spacing-lg);
     padding: var(--spacing-lg);
     background-color: var(--color-bg-sidebar);
-    border: 1px solid var(--color-border-light);
+    border: 1px dashed var(--color-primary);
     border-radius: var(--radius-md);
+}
+
+/*Header*/
+.nc-form-column-validation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nc-add-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    min-width: 70px;
+    height: 40px;
+    padding: 0 var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-medium);
+    font: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+}
+
+.nc-add-column:hover {
+    background-color: var(--color-bg-hover);
 }
 
 /* Fields */
@@ -189,6 +221,30 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
+}
+
+.nc-field-label-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nc-remove-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    min-width: 70px;
+    height: 40px;
+    padding: 0 var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-medium);
+    font: inherit;
+    cursor: pointer;
+}
+.nc-remove-column:hover {
+    background-color: var(--color-bg-hover);
+    border-color: var(--color-primary-hover);
 }
 
 .nc-required-star {
@@ -290,4 +346,12 @@ select.nc-control {
 
 .nc-button-secondary:hover {
     background-color: var(--color-bg-hover);
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: inherit;
 }

@@ -1,21 +1,23 @@
-:root {
-    --color-bg: #f5f4f0;
-    --color-primary: #0f6b58;
-    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-}
+@import url(../variables.css);
 
-body {
-    background-color: var(--color-bg);
-    font-size: 16px;
-    font-weight: 400;
-    font-family: var(--font-family-base), sans-serif;
+* {
     margin: 0;
     padding: 0;
 }
 
+body {
+    background-color: var(--color-bg-sidebar);
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--font-family-base), sans-serif;
+}
+
 #login-header {
     text-align: center;
+}
+
+#login-header p {
+    margin-top: 10px;
 }
 
 #login-body {
@@ -23,16 +25,16 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 60vh;
-    gap: 25px;
+    gap: var(--spacing-lg);
     align-items: center;
     line-height: 1.5;
-    color: #1a1a1a;
+    color: var(--color-text-primary);
 }
 
 #login-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--spacing-sm);
     width: 100%;
     max-width: 260px;
 }
@@ -76,7 +78,7 @@ button:hover {
     width: 40%;
     border: none;
     border-top: 1px solid #d0d0d0;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 #login-separator legend {
@@ -89,7 +91,7 @@ button:hover {
 #login-signup-option {
     color: gray;
     font-size: 14px;
-    margin-top: -20px;
+    margin-top: 20px;
 }
 
 #login-signup-option a {

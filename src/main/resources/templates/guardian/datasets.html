@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Datasets</title>
         <link rel="stylesheet" href="/style/fragments/navigation.css">
         <link rel="stylesheet" href="/style/guardian/datasets.css">
-<!--        <link rel="stylesheet" href="../../static/style/fragments/navigation.css">-->
-<!--        <link rel="stylesheet" href="../../static/style/guardian/datasets.css">-->
     </head>
+    <body>
+        <main class="dataset-page-container">
+            <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
+            <section class="datasets-container">
+                <div class="datasets-header">
+                    <h1>Datasets</h1>
+                    <a class="datasets-button" th:href="@{/datasets/dataset/new}">New dataset</a>
+                </div>
 
-    <div class="dataset-page-container">
-            <div th:replace="~{fragments/navigation::header-nav-bar}"> </div>
-<!--        <object type="text/html" data="../fragments/navigation.html"> </object>-->
-        <div class="datasets-container">
-            <div class="datasets-header">
-                <h1> Datasets </h1>
-                <form>
-                    <button> New dataset </button>
+                <form class="dataset-filter" method="post" action="datasets/new-dataset/create">
+                    <button type="button" class="dataset-filter-icon" aria-label="Open dataset filters"></button>
+                    <label class="dataset-filter-label" for="dataset-type-filter">
+                        <span class="sr-only">Dataset type</span>
+                        <select id="dataset-type-filter" name="fileType" >
+                            <option value="">All types</option>
+                            <option value="PDF">PDF</option>
+                            <option value="CSV">CSV</option>
+                            <option value="DOCX">DOCX</option>
+                        </select>
+                    </label>
                 </form>
-            </div>
-            <form class="dataset-filter">
-                <button> All types </button>
-            </form>
-            <table>
-                <tr>
-                    <th>Name</th> <th>Type</th> <th>Health</th> <th>Submissions</th> <th>Last activity</th>
-                </tr>
-                <tr th:each = "dataset : ${datasetList}">
-                    <td th:text = "${dataset.name}"></td>
-                    <td th:text = "${dataset.fileType}"></td>
-                    <td th:text = "${dataset.isActive}"></td>
-                    <td th:text = "${dataset.updatedAt}"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
+
+                <div class="datasets-table-card">
+                    <table class="datasets-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Health</th>
+                                <th>Submissions</th>
+                                <th>Last activity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Quarterly revenue reports</td>
+                                <td><span class="dataset-type-pill">PDF</span></td>
+                                <td><span class="dataset-health dataset-health-good">94</span></td>
+                                <td>24</td>
+                                <td>4 min ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>

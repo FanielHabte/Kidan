@@ -1,5 +1,10 @@
 @import "../variables.css";
 
+* {
+    padding: 0;
+    margin: 0;
+}
+
 .home-body-container {
     display: flex;
     gap: var(--spacing-md);

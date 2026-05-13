@@ -1,0 +1,44 @@
+{
+  "structuralRules": {
+    "columns": [],
+    "delimiter":""
+  },
+  "validations":
+  [
+    {
+      "column":"name",
+      "datatype":"string",
+      "customRule":{"ruleType": "keyword", "value": []},
+      "isUnique": false,
+      "isRequired": false
+    },
+    {
+      "column":"name",
+      "datatype":"integer",
+      "customRule":{"ruleType": "range", "value": {"min": 0, "max": 1}},
+      "isUnique": false,
+      "isRequired": false
+    },
+    {
+      "column":"name",
+      "datatype":"decimal",
+      "customRule":{"ruleType": "range", "value": {"min": 0, "max": 1}},
+      "isUnique": false,
+      "isRequired": false
+    },
+    {
+      "column":"name",
+      "datatype":"date",
+      "customRule":{"ruleType": "formatType", "value": ""},
+      "isUnique": false,
+      "isRequired": false
+    },
+    {
+      "column":"name",
+      "datatype":"timestamp",
+      "customRule":{"ruleType": "formatType", "value": ""},
+      "isUnique": false,
+      "isRequired": false
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 package io.kidan.guardian.enums;
 
 public enum RuleType {
-    PageCountRule, SchemaRule, KeywordRule
+    PAGE_COUNT_RULE, SCHEMA_RULE, KEYWORD_RULE, RANGE, FORMAT_TYPE
 }

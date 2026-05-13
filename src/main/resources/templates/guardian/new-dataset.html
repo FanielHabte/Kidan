@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>New dataset</title>
@@ -10,17 +10,14 @@
 <body>
     <main class="new-dataset-page">
         <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
-
         <div class="new-dataset-page-content-container">
             <div th:replace="~{fragments/new-dataset-progress-bar :: nd-progress-bar}"></div>
-
             <section class="nd-content-form-container">
                 <header class="nd-header">
                     <h1>Create dataset</h1>
                     <p>First, let's define what kind of data you'll be working with.</p>
                 </header>
-
-                <form class="nd-form-container" method="post" action="/datasets">
+                <form class="nd-form-container" method="POST" th:action="@{/datasets/dataset/new/create}" th:object="${formCreatedDataset}">
                     <div class="nd-form-card">
                         <div class="nd-field">
                             <label class="nd-field-label" for="dataset-name">Dataset name</label>
@@ -30,38 +27,33 @@
                                     name="name"
                                     type="text"
                                     placeholder="e.g., Employee Master Data"
+                                    th:field="*{name}"
                             >
                         </div>
-
                         <fieldset class="nd-field">
                             <legend class="nd-field-label">File type</legend>
-
                             <div class="nd-filetype-options">
                                 <label class="nd-filetype-option">
-                                    <input type="radio" name="fileType" value="CSV" checked>
+                                    <input type="radio" name="fileType" th:field="*{fileType}" value="CSV">
                                     <span class="nd-filetype-label">CSV</span>
                                 </label>
-
                                 <label class="nd-filetype-option">
-                                    <input type="radio" name="fileType" value="PDF">
+                                    <input type="radio" name="fileType" th:field="*{fileType}" value="PDF">
                                     <span class="nd-filetype-label">PDF</span>
                                 </label>
-
                                 <label class="nd-filetype-option">
-                                    <input type="radio" name="fileType" value="DOCX">
+                                    <input type="radio" name="fileType" th:field="*{fileType}" value="DOCX">
                                     <span class="nd-filetype-label">DOCX</span>
                                 </label>
                             </div>
                         </fieldset>
                     </div>
-
                     <div class="nd-form-action-container">
-                        <a class="nd-button nd-button-secondary" href="/datasets">Cancel</a>
+                        <a class="nd-button nd-button-secondary" th:href="@{/datasets}">Cancel</a>
                         <button type="submit" class="nd-button nd-button-primary">Continue</button>
                     </div>
                 </form>
             </section>
         </div>
-
     </main>
 </body>

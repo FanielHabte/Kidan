@@ -1,13 +1,14 @@
-@import "/static/style/variables.css";
+@import "../variables.css";
 
-header {
+#header {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    font-family: var(--font-family-base), sans-serif;
     padding: var(--spacing-lg);
 }
 
-header p {
+#header p {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);
 }
