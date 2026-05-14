@@ -47,7 +47,7 @@
                                     class="nc-control"
                                     type="text"
                                     placeholder="employee_id, first_name, last_name, email"
-                                    th:field="*{contractFileStructure.columnNames}"
+                                    th:field="*{csvFileStructure.columnNames}"
                             >
                         </div>
                         <!-- Delimiter -->
@@ -59,7 +59,7 @@
                             <select
                                     id="nc-delimiter-type"
                                     class="nc-control"
-                                    th:field="*{contractFileStructure.delimiter}"
+                                    th:field="*{csvFileStructure.delimiter}"
                             >
                                 <option value="COMMA">, (Comma)</option>
                                 <option value="PIPE">| (Pipe)</option>
@@ -89,7 +89,7 @@
                                         class="nc-control"
                                         type="text"
                                         placeholder="Column name"
-                                        th:field="*{contractRuleFormList[0].columnName}"
+                                        th:field="*{csvRuleFormList[0].columnName}"
                                 >
                             </div>
                             <div class="nc-field-grid">
@@ -101,7 +101,7 @@
                                     <select
                                             id="column-data-type"
                                             class="nc-control"
-                                            th:field="*{contractRuleFormList[0].dataType}"
+                                            th:field="*{csvRuleFormList[0].dataType}"
                                             onchange=""
                                     >
                                         <option value="STRING">Text</option>
@@ -121,17 +121,17 @@
                                             class="nc-control"
                                             type="text"
                                             placeholder="E.g., {key word 1, keyword 2, keyword3}"
-                                            th:field="*{contractRuleFormList[0].keywords}"
+                                            th:field="*{csvRuleFormList[0].keywords}"
                                     >
                                 </div>
                             </div>
                             <div class="nc-checkbox-grid">
                                 <label class="nc-checkbox-field">
-                                    <input type="checkbox" th:field="*{contractRuleFormList[0].required}">
+                                    <input type="checkbox" th:field="*{csvRuleFormList[0].isRequired}">
                                     <span>Required</span>
                                 </label>
                                 <label class="nc-checkbox-field">
-                                    <input type="checkbox" th:field="*{contractRuleFormList[0].unique}">
+                                    <input type="checkbox" th:field="*{csvRuleFormList[0].isUnique}">
                                     <span>Unique</span>
                                 </label>
                             </div>

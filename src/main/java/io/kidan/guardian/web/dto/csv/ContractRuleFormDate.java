@@ -1,18 +1,17 @@
-package io.kidan.guardian.dto.csv;
+package io.kidan.guardian.web.dto.csv;
 
 import io.kidan.guardian.enums.FormatType;
-import io.kidan.guardian.enums.RuleType;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-public class ContractRuleFormDate extends ContractRuleForm implements Serializable {
+public class ContractRuleFormDate implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private FormatType formatType;
 
     public ContractRuleFormDate() {
-        setRuleType(RuleType.FORMAT_TYPE);
+//        setRuleType(RuleType.FORMAT_TYPE);
     }
 
     public FormatType getFormatType() {

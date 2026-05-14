@@ -1,10 +1,10 @@
-package io.kidan.guardian.dto.csv;
+package io.kidan.guardian.web.dto.csv;
 
 import io.kidan.guardian.enums.Delimiter;
 
 import java.io.Serializable;
 
-public class ContractFileStructure implements Serializable {
+public class CsvFileStructure implements Serializable {
     private String columnNames;
     private Delimiter delimiter;
 

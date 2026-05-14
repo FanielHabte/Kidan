@@ -29,8 +29,8 @@
                 <div class="rr-card-section">
                     <h3>Rules summary</h3>
                     <div class="rr-detail-list">
-                        <strong>Required columns:</strong> <p th:text="${contractWrapper.contractFileStructure.columnNames}"></p>
-                        <strong>Column validations:</strong> <p th:text="${contractWrapper.contractRuleFormList.size()} + ' column/s'"></p>
+                        <strong>Required columns:</strong> <p th:text="${contractWrapper.csvFileStructure.columnNames}"></p>
+                        <strong>Column validations:</strong> <p th:text="${contractWrapper.csvRuleFormList.size()} + ' column/s'"></p>
                     </div>
                 </div>
                 <div class="rr-success-message">

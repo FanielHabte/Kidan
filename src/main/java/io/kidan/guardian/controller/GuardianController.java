@@ -1,12 +1,11 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.dto.csv.ContractFileStructure;
-import io.kidan.guardian.dto.csv.ContractRuleFormString;
-import io.kidan.guardian.dto.csv.ContractRuleFormWrapper;
 import io.kidan.guardian.entity.Contract;
-import io.kidan.guardian.entity.ContractRule;
 import io.kidan.guardian.entity.Dataset;
 import io.kidan.guardian.service.GuardianService;
+import io.kidan.guardian.web.dto.csv.CsvFileStructure;
+import io.kidan.guardian.web.dto.csv.CsvFormWrapper;
+import io.kidan.guardian.web.dto.csv.CsvRuleForm;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,17 +56,16 @@ public class GuardianController {
     In each new contract page refresh we:
      1. Get the dataset that was created from the session
      2. Pass a new ContractFileStructure object
-     2. Pass a new StringContractForm as the first item in the contractFormList found in the Wrapper class.
-        ** This is done be getting the list from the wrapper, adding a new StringForm object
+     2. Pass a new ContractRuleForm as the first item in the contractFormList found in the Wrapper class.
+        ** This is done be getting the list from the wrapper, adding a new ContractRuleForm object
            and replacing the list in the object with the new one **
     */
     @GetMapping("/datasets/contract/new")
     public String newContractPage (Model model) {
         Dataset newDataset = (Dataset)  session.getAttribute("newDataset");
-        ContractRuleFormWrapper wrapper = new ContractRuleFormWrapper();
-
-        wrapper.getContractRuleFormList().add(new ContractRuleFormString());
-        wrapper.setContractFileStructure(new ContractFileStructure());
+        CsvFormWrapper wrapper = new CsvFormWrapper();
+        wrapper.getCsvRuleFormList().add(new CsvRuleForm());
+        wrapper.setCsvFileStructure(new CsvFileStructure());
 
         model.addAttribute("contractFormWrapper",wrapper);
         model.addAttribute("newDatasetCreated",newDataset);
@@ -80,8 +78,8 @@ public class GuardianController {
         it to the page review page.
     */
     @PostMapping("/datasets/contract/new/create")
-    public String newContractCreated(@ModelAttribute ContractRuleFormWrapper contractRuleFormWrapper, Model model) {
-        session.setAttribute("contractWrapper", contractRuleFormWrapper);
+    public String newContractCreated(@ModelAttribute CsvFormWrapper csvFormWrapper) {
+        session.setAttribute("contractWrapper", csvFormWrapper);
 
         return "redirect:/datasets/review/resources";
     }
@@ -89,7 +87,7 @@ public class GuardianController {
     @GetMapping("/datasets/review/resources")
     public String newContractCreated(Model model) {
         Dataset newDataset = (Dataset) session.getAttribute("newDataset");
-        ContractRuleFormWrapper wrapper = (ContractRuleFormWrapper) session.getAttribute("contractWrapper");
+        CsvFormWrapper wrapper = (CsvFormWrapper) session.getAttribute("contractWrapper");
         model.addAttribute("newDataset", newDataset );
         model.addAttribute("contractWrapper", wrapper);
 
@@ -100,12 +98,10 @@ public class GuardianController {
     @PostMapping("/datasets/resources/create")
     public String allResourcesCreated() {
         Dataset dataset = (Dataset) session.getAttribute("newDataset");
-        ContractRuleFormWrapper wrapper = (ContractRuleFormWrapper) session.getAttribute("contractWrapper");
+        CsvFormWrapper wrapper = (CsvFormWrapper) session.getAttribute("contractWrapper");
         Contract contract = new Contract();
-        ContractRule contractRule = new ContractRule();
-        System.out.println(wrapper);
 
-        guardianService.createDatasetAndContract(dataset, contract, wrapper, contractRule);
+        guardianService.createDatasetAndContract(dataset, contract, wrapper);
 
         return "redirect:/datasets";
     }

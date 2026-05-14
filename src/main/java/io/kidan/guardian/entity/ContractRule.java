@@ -1,5 +1,6 @@
 package io.kidan.guardian.entity;
 
+import io.kidan.guardian.enums.RuleType;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -11,14 +12,14 @@ public class ContractRule {
     private String id;
     @ManyToOne @JoinColumn (name = "contract_id", nullable = false)
     private Contract contract;
-//    @Enumerated (EnumType.STRING) @Column(nullable = false)
-//    private RuleType ruleType;
+    @Enumerated (EnumType.STRING) @Column(nullable = false)
+    private RuleType ruleType;
     @Column (nullable = false)
     private String ruleConfig;
-//    @Column (nullable = false)
-//    private boolean isUnique;
-//    @Column (nullable = false)
-//    private boolean isRequired;
+    @Column (nullable = false)
+    private boolean isUnique;
+    @Column (nullable = false)
+    private boolean isRequired;
     @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
@@ -52,13 +53,13 @@ public class ContractRule {
         this.contract = contract;
     }
 
-//    public RuleType getRuleType() {
-//        return ruleType;
-//    }
-//
-//    public void setRuleType(RuleType ruleType) {
-//        this.ruleType = ruleType;
-//    }
+    public RuleType getRuleType() {
+        return ruleType;
+    }
+
+    public void setRuleType(RuleType ruleType) {
+        this.ruleType = ruleType;
+    }
 
     public String getRuleConfig() {
         return ruleConfig;
@@ -68,13 +69,21 @@ public class ContractRule {
         this.ruleConfig = ruleConfig;
     }
 
-//    public boolean isRequired() {
-//        return isRequired;
-//    }
-//
-//    public void setRequired(boolean required) {
-//        isRequired = required;
-//    }
+    public boolean isRequired() {
+        return isRequired;
+    }
+
+    public void setRequired(boolean required) {
+        isRequired = required;
+    }
+
+    public boolean isUnique() {
+        return isUnique;
+    }
+
+    public void setUnique(boolean unique) {
+        isUnique = unique;
+    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

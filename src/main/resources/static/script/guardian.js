@@ -1,7 +1,7 @@
 const validationsContainer = document.querySelector(".nc-form-column-validations-container");
 const addValidationButton = document.querySelector(".nc-add-column");
 const form = document.querySelector(".nc-form")
-const state = {counter:1};
+const state = {counter: 1};
 
 function addValidationColumn() {
     state.counter++;
@@ -47,11 +47,5 @@ validationsContainer.addEventListener("change", (event) => {
     }
 });
 
-// form.addEventListener("submit", (event) => {
-//     event.preventDefault()
-//
-//     const formData = new FormData(form);
-//     const data = Object.fromEntries(formData.entries());
-//     console.log(data);
-// })
+
 

@@ -67,6 +67,8 @@ body {
     color: var(--color-text-primary);
     font-family: var(--font-family-base), sans-serif;
     font-size: var(--font-size-sm);
+    list-style: none;
+    text-decoration: none;
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
     transition: background-color var(--transition-fast), border-color var(--transition-fast);
