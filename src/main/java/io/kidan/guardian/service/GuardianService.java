@@ -26,7 +26,15 @@ public class GuardianService {
     }
 
     public List<Dataset> getAllDataSets() {
-        return datasetRepository.findAll();
+        String userId = userAuthService
+                .AuthenticatedUser()
+                .orElseThrow(
+                        () -> new UsernameNotFoundException(
+                                "Authenticated User not found"
+                        )
+                ).getId();
+
+        return datasetRepository.findAllByUserId(userId);
     }
 
     public void createDatasetAndContract(@NonNull Dataset dataset, @NonNull Contract contract, @NonNull CsvFormWrapper wrapper) throws UsernameNotFoundException {
@@ -38,6 +46,20 @@ public class GuardianService {
                         )
                 );
         csvFileService.saveCsvFile(currentUser, dataset, contract, wrapper);
+    }
+
+    public Dataset getDatasetById(String id) throws RuntimeException {
+        String userId = userAuthService
+                .AuthenticatedUser()
+                .orElseThrow(
+                        () -> new UsernameNotFoundException(
+                                "Authenticated User not found"
+                        )
+                ).getId();
+
+        return datasetRepository.findByIdAndUserId(id, userId).orElseThrow(
+                () -> new RuntimeException("Dataset was not found")
+        );
     }
 
 }

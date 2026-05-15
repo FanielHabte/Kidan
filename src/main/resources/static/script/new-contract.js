@@ -1,16 +1,18 @@
 const validationsContainer = document.querySelector(".nc-form-column-validations-container");
 const addValidationButton = document.querySelector(".nc-add-column");
 const form = document.querySelector(".nc-form")
-const state = {counter: 1};
+let counter = 0;
 
 function addValidationColumn() {
-    state.counter++;
-    const original = document.querySelector(".nc-form-column-validation");
+    counter++;
+    const original = document.querySelector("#column-0");
     const newValidation = original.cloneNode(true);
+    newValidation.id = `column-${counter}`
     const inputs = newValidation.querySelectorAll("input, select, textarea");
     inputs.forEach(field => {
-        field.id = field.id + state.counter.toString()
+        field.name =  field.name.replace(/\[\d+]/, `[${counter}]`);
     })
+
     validationsContainer.append(newValidation);
 }
 
@@ -20,7 +22,6 @@ validationsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("nc-remove-column")) {
         event.target.closest(".nc-form-column-validation").remove();
     }
-    state.counter--;
 });
 
 validationsContainer.addEventListener("change", (event) => {
@@ -46,6 +47,5 @@ validationsContainer.addEventListener("change", (event) => {
         }
     }
 });
-
 
 

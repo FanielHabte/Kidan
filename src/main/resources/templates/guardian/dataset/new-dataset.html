@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New dataset</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/fragments/new-dataset-progress-bar.css">
+    <link rel="stylesheet" href="/style/guardian/new-dataset.css">
+</head>
+<body>
+<main class="new-dataset-page">
+    <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
+    <div class="new-dataset-page-content-container">
+        <div th:replace="~{fragments/new-dataset-progress-bar :: nd-progress-bar}"></div>
+        <section class="nd-content-form-container">
+            <header class="nd-header">
+                <h1>Create dataset</h1>
+                <p>First, let's define what kind of data you'll be working with.</p>
+            </header>
+            <form class="nd-form-container" method="POST" th:action="@{/guardian/dataset/new/create}"
+                  th:object="${new_dataset}">
+                <div class="nd-form-card">
+                    <div class="nd-field">
+                        <label class="nd-field-label" for="dataset-name">Dataset name</label>
+                        <input
+                                id="dataset-name"
+                                class="nd-text-input"
+                                name="name"
+                                type="text"
+                                placeholder="e.g., Employee Master Data"
+                                th:field="*{name}"
+                                required
+                        >
+                    </div>
+                    <fieldset class="nd-field">
+                        <legend class="nd-field-label">File type</legend>
+                        <div class="nd-filetype-options">
+                            <label class="nd-filetype-option">
+                                <input type="radio" name="fileType" th:field="*{fileType}" value="CSV" required>
+                                <span class="nd-filetype-label">CSV</span>
+                            </label>
+                            <label class="nd-filetype-option">
+                                <input type="radio" name="fileType" th:field="*{fileType}" value="PDF" required>
+                                <span class="nd-filetype-label">PDF</span>
+                            </label>
+                            <label class="nd-filetype-option">
+                                <input type="radio" name="fileType" th:field="*{fileType}" value="DOCX" required>
+                                <span class="nd-filetype-label">DOCX</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="nd-form-action-container">
+                    <a class="nd-button nd-button-secondary" th:href="@{/guardian/datasets}">Cancel</a>
+                    <button type="submit" class="nd-button nd-button-primary">Continue</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
+</body>

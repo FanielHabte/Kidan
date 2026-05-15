@@ -10,11 +10,11 @@ import java.util.Optional;
 
 @Repository
 public interface DatasetRepository extends JpaRepository <Dataset, String> {
-    @Override @NonNull
-    Optional<Dataset> findById(@NonNull String id);
+    @NonNull
+    Optional<Dataset> findByIdAndUserId(@NonNull String id, String userId);
 
-    @Override @NonNull
-    List<Dataset> findAll();
+    @NonNull
+    List<Dataset> findAllByUserId(String userId);
 
     @Override @NonNull
     <S extends Dataset> S save(@NonNull S dataset);

@@ -22,15 +22,19 @@
                 <div class="rr-card-section">
                     <h3>Dataset</h3>
                     <div class="rr-detail-list">
-                        <strong>Name:</strong> <p th:text="${newDataset.name}"></p>
-                        <strong>File type:</strong> <p th:text="${newDataset.fileType.toString()}"></p>
+                        <strong>Name:</strong>
+                        <p th:text="${created_dataset.name}"></p>
+                        <strong>File type:</strong>
+                        <p th:text="${created_dataset.fileType.toString()}"></p>
                     </div>
                 </div>
                 <div class="rr-card-section">
                     <h3>Rules summary</h3>
                     <div class="rr-detail-list">
-                        <strong>Required columns:</strong> <p th:text="${contractWrapper.csvFileStructure.columnNames}"></p>
-                        <strong>Column validations:</strong> <p th:text="${contractWrapper.csvRuleFormList.size()} + ' column/s'"></p>
+                        <strong>Required columns:</strong>
+                        <p th:text="${created_contract_form.csvFileStructure.columnNames}"></p>
+                        <strong>Column validations:</strong>
+                        <p th:text="${created_contract_form.csvRuleFormList.size()} + ' column/s'"></p>
                     </div>
                 </div>
                 <div class="rr-success-message">
@@ -38,8 +42,8 @@
                 </div>
             </div>
             <div class="rr-form-action-container">
-                <a class="rr-button rr-button-secondary" href="/datasets/new-contract">Back</a>
-                <form class="rr-form" method="POST" th:action="@{/datasets/resources/create}">
+                <a class="rr-button rr-button-secondary" href="/guardian/contract/new">Back</a>
+                <form class="rr-form" method="POST" th:action="@{/guardian/resources/create}">
                     <button type="submit" class="rr-button rr-button-primary">Publish</button>
                 </form>
             </div>

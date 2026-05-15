@@ -25,12 +25,12 @@
             <div class="nc-dataset-detail-container">
                 <p>Dataset</p>
                 <div class="nc-dataset-detail">
-                    <p th:text="${newDatasetCreated.name}"></p>
-                    <p th:text="${newDatasetCreated.fileType.toString()}"></p>
+                    <p th:text="${created_dataset.name}"></p>
+                    <p th:text="${created_dataset.fileType.toString()}"></p>
                 </div>
             </div>
-            <form class="nc-form" method="POST" th:action="@{/datasets/contract/new/create}"
-                  th:object="${contractFormWrapper}">
+            <form class="nc-form" method="POST" th:action="@{/guardian/contract/new/create}"
+                  th:object="${new_contract_form}">
                 <!-- Form Card -->
                 <div class="nc-form-card">
                     <!-- Structural Rules -->
@@ -48,6 +48,7 @@
                                     type="text"
                                     placeholder="employee_id, first_name, last_name, email"
                                     th:field="*{csvFileStructure.columnNames}"
+                                    required
                             >
                         </div>
                         <!-- Delimiter -->
@@ -60,6 +61,7 @@
                                     id="nc-delimiter-type"
                                     class="nc-control"
                                     th:field="*{csvFileStructure.delimiter}"
+                                    required
                             >
                                 <option value="COMMA">, (Comma)</option>
                                 <option value="PIPE">| (Pipe)</option>
@@ -73,9 +75,11 @@
                             <h3>Column Validations</h3>
                             <button class="nc-add-column" type="button">Add column</button>
                         </div>
-                        <div class="nc-form-column-validation">
+                        <div class="nc-form-column-validation item-0"
+                             id="column-0"
+                        >
                             <div class="nc-form-field">
-                                <label class="nc-field-label nc-field-label-header" for="column-name">
+                                <label class="nc-field-label nc-field-label-header">
                                     <div>
                                         <span class="nc-required-star">*</span>
                                         Name
@@ -85,24 +89,22 @@
                                     </button>
                                 </label>
                                 <input
-                                        id="column-name"
                                         class="nc-control"
                                         type="text"
                                         placeholder="Column name"
                                         th:field="*{csvRuleFormList[0].columnName}"
+                                        required
                                 >
                             </div>
                             <div class="nc-field-grid">
                                 <div class="nc-form-field data-type">
-                                    <label class="nc-field-label" for="column-data-type">
+                                    <label class="nc-field-label">
                                         <span class="nc-required-star">*</span>
                                         Data type
                                     </label>
                                     <select
-                                            id="column-data-type"
                                             class="nc-control"
                                             th:field="*{csvRuleFormList[0].dataType}"
-                                            onchange=""
                                     >
                                         <option value="STRING">Text</option>
                                         <option value="INT">Integer</option>
@@ -113,15 +115,14 @@
                                 </div>
                                 <!-- String -->
                                 <div class="nc-form-field format-rule string-format show">
-                                    <label class="nc-field-label keyword-word" for="column-format-keyword">
+                                    <label class="nc-field-label keyword-word">
                                         Keywords
                                     </label>
                                     <input
-                                            id="column-format-keyword"
                                             class="nc-control"
-                                            type="text"
                                             placeholder="E.g., {key word 1, keyword 2, keyword3}"
                                             th:field="*{csvRuleFormList[0].keywords}"
+                                            required
                                     >
                                 </div>
                             </div>
@@ -139,8 +140,9 @@
 
                     </div>
                 </div>
+                <!--  -->
                 <div class="nc-form-action-container">
-                    <a class="nc-button nc-button-secondary" th:href="@{/datasets/dataset/new}">Back</a>
+                    <a class="nc-button nc-button-secondary" th:href="@{/guardian/dataset/new}">Back</a>
                     <button type="submit" class="nc-button nc-button-primary">Review</button>
                 </div>
             </form>
@@ -148,6 +150,6 @@
     </div>
 </main>
 </body>
-<script src="/script/guardian.js"></script>
+<script src="/script/new-contract.js"></script>
 <script th:src="@{/webjars/htmx.org/2.0.0/dist/htmx.min.js}"></script>
 </html>

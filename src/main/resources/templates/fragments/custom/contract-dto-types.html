@@ -1,0 +1,82 @@
+<div th:fragment="string-format"
+     class="nc-form-field format-rule string-format column-0-validation"
+>
+    <label class="nc-field-label keyword-word" for="column-format-keyword">
+        Keywords
+    </label>
+    <input
+            id="column-format-keyword"
+            class="nc-control"
+            name="formatRule"
+            type="text"
+            placeholder="E.g., {key word 1, keyword 2, keyword3}"
+            th:field="*{csvRuleFormList[0].keywords}"
+    >
+</div>
+
+<div th:fragment="timestamp-format"
+     class="nc-form-field format-rule timestamp-format column-0-validation"
+>
+    <label class="nc-field-label timestamp-format" for="column-format-timestamp">
+        Timestamp format
+    </label>
+    <select
+            id="column-format-timestamp"
+            class="nc-control"
+            name="dataType"
+            th:field="*{csvRuleFormList[0].formatType}"
+    >
+        <option value="ymdthmsz">YYYY-MM-DDTHH:mm:ss.sssZ</option>
+        <option value="epoch">Epoch</option>
+        <option value="ymdms">YYYY-MM-DD HH:mm:ss</option>
+    </select>
+</div>
+
+<div th:fragment="date-format"
+     class="nc-form-field format-rule date-format column-0-validation"
+>
+    <label class="nc-field-label" for="column-format-date">
+        Date format
+    </label>
+    <select
+            id="column-format-date"
+            class="nc-control"
+            name="dataType"
+            th:field="*{csvRuleFormList[0].formatType}"
+    >
+        <option value="dmy">DD/MM/YYYY</option>
+        <option value="mdy">MM/DD/YYYY</option>
+        <option value="ymd">YYYY-MM-DD</option>
+    </select>
+</div>
+
+
+<div th:fragment="decimal-format"
+     class="nc-form-field format-rule decimal-format column-0-validation"
+>
+    <label class="nc-field-label" for="column-format-decimal-range">
+        Range
+    </label>
+    <input
+            id="column-format-decimal-range"
+            class="nc-control"
+            name="formatRule"
+            placeholder="E.g., 1.4-100.4"
+            th:field="*{csvRuleFormList[0].max}"
+    >
+</div>
+
+<div th:fragment="integer-format"
+     class="nc-form-field format-rule integert-format column-0-validation"
+>
+    <label class="nc-field-label" for="column-format-number-range">
+        Range
+    </label>
+    <input
+            id="column-format-number-range"
+            class="nc-control"
+            name="formatRule"
+            placeholder="E.g., 1-100"
+            th:field="*{csvRuleFormList[0].max}"
+    >
+</div>
