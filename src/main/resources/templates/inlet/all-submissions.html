@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions - Kidan</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/inlet/all-submissions.css">
+</head>
+<body>
+<main class="submissions-page-container">
+    <div th:replace="~{fragments/reusable/navigation :: header-nav-bar}"></div>
+    <section class="submissions-container">
+        <div class="page-depth">
+            <p>/ Submissions</p>
+        </div>
+        <div class="submissions-header">
+            <h1>Submissions</h1>
+            <a class="submissions-button" th:href="@{/inlet/submission/new}">New submission</a>
+        </div>
+        <form class="submissions-filter" method="post" action="#">
+            <button type="button" class="submissions-filter-icon" aria-label="Open submissions filters"></button>
+            <label class="submissions-filter-label" for="submissions-type-filter">
+                <span class="sr-only">Dataset type</span>
+                <select id="submissions-type-filter" name="fileType">
+                    <option value="ALL">All types</option>
+                    <option value="PDF">PDF</option>
+                    <option value="CSV">CSV</option>
+                    <option value="DOCX">DOCX</option>
+                </select>
+            </label>
+        </form>
+        <div class="submissions-table-card">
+            <table class="submissions-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Health</th>
+                    <th>Submissions</th>
+                    <th>Last activity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a></a>
+                    </td>
+                    <td><span class="submissions-type-pill"></span></td>
+                    <td><span class="submissions-health submissions-health-good">94</span></td>
+                    <td>24</td>
+                    <td>4 min ago</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+<script th:src="@{script/all-submissions.js}"></script>
+</html>

@@ -5,20 +5,24 @@
     </div>
     <nav aria-label="Main navigation">
         <ul class="nav-section">
-            <li><a class="nav-link active" href="/static">Home</a></li>
-            <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            <li><a class="nav-link active" th:href="@{/}">Home</a></li>
+            <li><a class="nav-link" href="#">Dashboard</a></li>
             <li><a class="nav-link" th:href="@{/guardian/datasets}">Datasets</a></li>
             <li><a class="nav-link" th:href="@{/guardian/contracts}">Contracts</a></li>
-            <li><a class="nav-link" href="/submissions">Submissions</a></li>
+            <li><a class="nav-link" th:href="@{/inlet/submissions}">Submissions</a></li>
         </ul>
         <hr class="nav-divider">
         <ul class="nav-section">
-            <li><a class="nav-link" href="/document-qa">Document Q&amp;A</a></li>
+            <li><a class="nav-link" href="#">Document Q&amp;A</a></li>
         </ul>
         <hr class="nav-divider">
         <ul class="nav-section">
-            <li><a class="nav-link" href="/team-management">Team &amp; Access</a></li>
-            <li><a class="nav-link" href="/settings">Settings</a></li>
+            <li><a class="nav-link" href="#">Team &amp; Access</a></li>
+            <li><a class="nav-link" href="#">Settings</a></li>
+        </ul>
+        <hr class="nav-divider">
+        <ul class="nav-section">
+            <li><a class="nav-link" href="#">Sign out</a></li>
         </ul>
     </nav>
 </aside>

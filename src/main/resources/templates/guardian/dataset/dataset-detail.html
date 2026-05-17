@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dataset Detail</title>
+    <title>Dataset detail - Kidan</title>
     <link rel="stylesheet" href="/style/fragments/navigation.css">
     <link rel="stylesheet" href="/style/guardian/dataset-detail.css">
 </head>
@@ -12,7 +12,7 @@
     <div th:if="${error != null}">
         <p th:text="${error.toString()}"></p>
     </div>
-    <div>
+    <div class="page-depth">
         <p th:text="'Dataset / ' + ${requested_dataset.name}"></p>
     </div>
     <section class="dd-header">

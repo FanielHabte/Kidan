@@ -25,9 +25,9 @@ body {
     gap: var(--spacing-sm);
 }
 
-.edit-dataset-header p:first-child {
+.page-depth {
     font-size: var(--font-size-sm);
-    color: var(--color-text-tertiary);
+    color: var(--color-text-secondary);
     margin: 0;
 }
 

@@ -28,6 +28,13 @@ body * {
     line-height: var(--line-height-normal);
 }
 
+/* Breadcrumb */
+.page-depth p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
 /* Header */
 .dd-header {
     display: flex;

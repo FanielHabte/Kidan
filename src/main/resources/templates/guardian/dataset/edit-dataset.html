@@ -10,7 +10,7 @@
     <div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
     <main class="edit-data-page-container">
         <section class="edit-dataset-header">
-            <p th:text="'Dataset / ' + ${editable_dataset.name} + ' / Edit'" ></p>
+            <p class="page-depth" th:text="'Dataset / ' + ${editable_dataset.name} + ' / Edit'" ></p>
             <h2>Edit dataset</h2>
             <div class="information-block">
                 <p>You can update the dataset name. Other properties like file type cannot be changes after creation.</p>

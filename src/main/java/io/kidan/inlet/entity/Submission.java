@@ -34,9 +34,7 @@ public class Submission {
     @Column (nullable = false)
     private LocalDateTime createdAt;
 
-    public Submission() {
-
-    }
+    public Submission() {}
 
     @PrePersist
     public void setCreatedAt() {

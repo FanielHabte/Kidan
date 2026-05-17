@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New submission - Kidan</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/inlet/new-submission.css">
 </head>
 <body>
-
+<div th:replace="~{fragments/reusable/navigation :: header-nav-bar}"></div>
+<form class="submission-container">
+    <div class="page-depth">
+        <p>Submission / New</p>
+    </div>
+    <div class="submission-header">
+        <h1>New submission</h1>
+        <a class="submission-button" th:href="@{/guardian/dataset/new}">New submission</a>
+    </div>
+    <div class="choos-resources">
+        <label class="select-contract" for="contract">
+            <span>Contract</span>
+            <div class="contract-input-wrapper">
+                <select id="contract">
+                    <option value="" disabled selected hidden>Choose contract</option>
+                    <option>Contract 2</option>
+                    <option>Contract 3</option>
+                </select>
+                <button>Change</button>
+            </div>
+        </label>
+        <label class="select-dataset" for="dataset">
+            <span>Dataset</span>
+            <div class="dataset-input-wrapper">
+                <select id="dataset">
+                    <option value="" disabled selected hidden>Choose dataset</option>
+                    <option>Dataset 2</option>
+                    <option>Dataset 3</option>
+                </select>
+                <button>Change</button>
+            </div>
+        </label>
+    </div>
+    <div>
+        <label class="file-upload" for="upload-file">
+            <span>File</span>
+            <div class="file-upload-wrapper">
+                <input id="upload-file" type="file">
+                <button>Remove</button>
+            </div>
+        </label>
+    </div>
+    <div class="enable-qa">
+        <p>Options</p>
+        <label class="enable-qa-wrapper" for="enable-qa">
+            <input id="enable-qa" type="checkbox">
+            <span>Enable natural language Q&A for this file</span>
+        </label>
+    </div>
+    <button type="submit">Validate & Submit</button>
+</form>
 </body>
+<script th:src="@{script/submission-page.js}"></script>
 </html>
