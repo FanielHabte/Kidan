@@ -5,8 +5,10 @@ import io.kidan.guardian.enums.Delimiter;
 import java.io.Serializable;
 
 public class CsvFileStructure implements Serializable {
+    private String contractName;
     private String columnNames;
     private Delimiter delimiter;
+    private String description;
 
     public String getColumnNames() {
         return columnNames;
@@ -22,5 +24,21 @@ public class CsvFileStructure implements Serializable {
 
     public void setDelimiter(Delimiter delimiter) {
         this.delimiter = delimiter;
+    }
+
+    public String getContractName() {
+        return contractName;
+    }
+
+    public void setContractName(String contractName) {
+        this.contractName = contractName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

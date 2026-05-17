@@ -5,10 +5,7 @@ import io.kidan.guardian.service.GuardianService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class DatasetController {
@@ -25,7 +22,7 @@ public class DatasetController {
     public String datasetsListPage(Model model) {
         model.addAttribute("all_datasets", guardianService.getAllDataSets());
 
-        return "guardian/all-datasets";
+        return "guardian/dataset/all-datasets";
     }
 
     // Creates and passes new dataset for form submission
@@ -33,7 +30,7 @@ public class DatasetController {
     public String newDataSetPage(Model model) {
         model.addAttribute("new_dataset", new Dataset());
 
-        return "guardian/new-dataset";
+        return "guardian/dataset/new-dataset";
     }
 
     /*
@@ -53,7 +50,7 @@ public class DatasetController {
         1. If successful it passes dataset
         2. Else it passes the exception message to client
     */
-    @GetMapping("guardian/dataset/detail/{id}")
+    @GetMapping("/guardian/dataset/detail/{id}")
     public String getDatasetDetail(@PathVariable String id, Model model) {
         try {
             Dataset requestedDataset = guardianService.getDatasetById(id);
@@ -62,7 +59,22 @@ public class DatasetController {
             model.addAttribute("error", exception.getMessage());
         }
 
-        return "guardian/dataset-detail";
+        return "guardian/dataset/dataset-detail";
+    }
+
+    @GetMapping("/guardian/dataset/edit/{id}")
+    public String editDataset(@PathVariable String id, Model model) {
+        Dataset editableDataset = guardianService.getDatasetById(id);
+        model.addAttribute("editable_dataset", editableDataset);
+
+        return "guardian/dataset/edit-dataset";
+    }
+
+    @PostMapping("/guardian/dataset/save")
+    public String saveEditedDataset(@RequestParam String id, @RequestParam String name) {
+        guardianService.editDataset(id, name);
+
+        return "redirect:/guardian/datasets";
     }
 
 }

@@ -14,16 +14,27 @@ KIDAN DESIGN SYSTEM - CSS VARIABLES
     --color-bg-sidebar: #f5f4f0;         /* Warm off-white - sidebar background */
     --color-bg-hover: #eae9e5;           /* Light gray - hover states */
     --color-bg-active: #ffffff;          /* White - active nav item background */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8f8f7;
+    --color-bg-success: #dcfce7;
+    --color-bg-danger: #fee2e2;
+    --color-bg-warning: #fef3c7;
 
     /* Text Colors */
     --color-text-primary: #1a1a1a;       /* Near-black - headings, primary text */
     --color-text-secondary: #666666;     /* Medium gray - secondary text */
     --color-text-tertiary: #999999;      /* Light gray - labels, metadata */
+    --color-text-success: #166534;
+    --color-text-danger: #991b1b;
+    --color-text-warning: #92400e;
 
     /* Border Colors */
     --color-border-light: #e5e5e5;       /* Light gray - table borders, dividers */
     --color-border-medium: #d0d0d0;      /* Medium gray - input borders */
     --color-border-dark: #999999;        /* Dark gray - focused borders */
+    --color-border-primary: #e5e5e5;
+    --color-border-secondary: #d4d4d4;
+    --color-border-tertiary: #e5e5e5;
 
     /* Badge/Pill Colors */
     --color-badge-bg: #f0ede8;           /* Light beige - file type badges */

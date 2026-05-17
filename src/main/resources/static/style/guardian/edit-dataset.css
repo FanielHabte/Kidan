@@ -1,0 +1,178 @@
+@import "../variables.css";
+
+/* Layout container adjustment */
+body {
+    display: flex;
+    margin: 0;
+    background-color: var(--color-bg-base);
+    font-family: var(--font-family-base), sans-serif;
+}
+
+.edit-data-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl);
+}
+
+/* Header & Breadcrumbs */
+.edit-dataset-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.edit-dataset-header p:first-child {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+.edit-dataset-header h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+
+.information-block {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: #E6F1FB;
+    border: 1px solid #B5D4F4;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: #042C53;
+    line-height: var(--line-height-normal);
+}
+
+/* The Card (Submission Form) */
+.submission-form {
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.submission-form h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Form Styling */
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.input-form label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.input-form label span {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.input-form label span span {
+    color: var(--color-error); /* Use system error color for asterisk */
+}
+
+.input-form input {
+    height: 42px; /* Standardized height from your reference */
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-md);
+    padding: 0 var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    background: var(--color-bg-base);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(15, 107, 88, 0.12); /* Matching primary glow */
+}
+
+.input-form input:disabled {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-tertiary);
+    cursor: not-allowed;
+    border-color: var(--color-border-light);
+}
+
+/* Action Buttons */
+.submission-action-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+}
+
+.submission-action-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    height: 44px;
+    padding: 0 var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+/* Cancel / Secondary Button */
+.submission-action-container button:not([type="submit"]) {
+    border: 1px solid var(--color-border-medium);
+    background: var(--color-bg-base);
+    color: var(--color-text-primary);
+}
+
+.submission-action-container button:not([type="submit"]):hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-dark);
+}
+
+/* Save / Primary Button */
+.submission-action-container button[type="submit"] {
+    background: var(--color-primary);
+    color: #ffffff;
+    border: 1px solid var(--color-primary);
+}
+
+.submission-action-container button[type="submit"]:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .edit-data-page-container {
+        padding: var(--spacing-lg);
+    }
+
+    .submission-action-container {
+        flex-direction: column-reverse;
+    }
+
+    .submission-action-container button {
+        width: 100%;
+    }
+}

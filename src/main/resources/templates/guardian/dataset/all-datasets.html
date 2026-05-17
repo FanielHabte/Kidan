@@ -9,8 +9,11 @@
 </head>
 <body>
 <main class="dataset-page-container">
-    <div th:replace="~{fragments/navigation :: header-nav-bar}"></div>
+    <div th:replace="~{fragments/reusable/navigation :: header-nav-bar}"></div>
     <section class="datasets-container">
+        <div>
+            <p>/ Dataset</p>
+        </div>
         <div class="datasets-header">
             <h1>Datasets</h1>
             <a class="datasets-button" th:href="@{/guardian/dataset/new}">New dataset</a>

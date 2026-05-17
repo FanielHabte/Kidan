@@ -2,8 +2,10 @@ package io.kidan.guardian.factory;
 
 import io.kidan.guardian.entity.Contract;
 import io.kidan.guardian.entity.ContractRule;
+import io.kidan.guardian.entity.CsvContract;
 import io.kidan.guardian.enums.DataType;
 import io.kidan.guardian.enums.RuleType;
+import io.kidan.guardian.web.dto.csv.CsvFileStructure;
 import io.kidan.guardian.web.dto.csv.CsvRuleForm;
 import io.kidan.guardian.web.serlization.CsvSerializer;
 import org.springframework.stereotype.Component;
@@ -41,12 +43,19 @@ public class ContractRuleFactory {
 
     public List<ContractRule> getContractRuleList (List<CsvRuleForm>  csvFormList, Contract contract) {
         List<ContractRule> contractRuleList = new ArrayList<>();
-
         for (CsvRuleForm csvRuleForm: csvFormList) {
             contractRuleList.add(buildContractRule(csvRuleForm, contract));
         }
 
         return  contractRuleList;
+    }
+
+    public CsvContract buildCsvContract (CsvFileStructure csvFileStructure, CsvContract csvContract) {
+        csvContract.setContractName(csvFileStructure.getContractName());
+        csvContract.setColumnNames(csvFileStructure.getColumnNames());
+        csvContract.setDescription(csvFileStructure.getDescription());
+
+        return csvContract;
     }
 
 }

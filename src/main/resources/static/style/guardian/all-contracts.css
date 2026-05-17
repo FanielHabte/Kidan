@@ -1,0 +1,291 @@
+/* ========================================
+   CONTRACTS PAGE STYLES
+======================================== */
+@import "../variables.css";
+
+body {
+    display: flex;
+    gap: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+/* Main container */
+.contracts-page-container {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-base);
+    gap: var(--spacing-lg);
+    min-width: 40%;
+}
+
+/* Header section */
+.contracts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.contracts-header h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.contracts-header a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    min-height: 44px;
+    padding: 0 var(--spacing-lg);
+    background-color: var(--color-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--color-bg-base);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-sm);
+    list-style: none;
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.contracts-header a:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-bg-hover);
+}
+
+/* KPI boxes */
+.contracts-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.kpi-box {
+    background: var(--color-bg-sidebar);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.kpi-box p:first-child {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    margin: 0 0 var(--spacing-xs) 0;
+    font-weight: var(--font-weight-medium);
+}
+
+.kpi-box p:last-child {
+    font-size: 22px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Contracts table */
+.contracts-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg-base);
+    border: 0.5px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.contracts-table thead {
+    background: var(--color-bg-sidebar);
+    border-bottom: 0.5px solid var(--color-border-light);
+}
+
+.contracts-table thead th {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.contracts-table tbody td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 0.5px solid var(--color-border-light);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    vertical-align: middle;
+}
+
+.contracts-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.contracts-table tbody tr {
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.contracts-table tbody tr:hover {
+    background: var(--color-bg-hover);
+}
+
+/* Table cell specific styles */
+.contracts-table tbody td:first-child {
+    font-weight: var(--font-weight-medium);
+}
+
+/* Dataset link styling */
+.contracts-table a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+}
+
+.contracts-table a:hover {
+    text-decoration: underline;
+}
+
+/* Version tag */
+.version-tag {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: var(--color-bg-sidebar);
+    color: var(--color-text-secondary);
+    border: 0.5px solid var(--color-border-light);
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Status badges */
+.status-badge {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    padding: 2px var(--spacing-sm);
+    border-radius: 10px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.status-badge.active {
+    background: var(--color-bg-success);
+    color: var(--color-text-success);
+}
+
+.status-badge.inactive {
+    background: var(--color-bg-danger);
+    color: var(--color-text-danger);
+}
+
+/* Last updated column */
+.contracts-table tbody td:last-child {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+}
+
+/* Empty state */
+.contracts-table tbody tr.empty-state td {
+    text-align: center;
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .contracts-kpis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contracts-page-container {
+        padding: var(--spacing-lg);
+    }
+
+    .contracts-kpis {
+        grid-template-columns: 1fr;
+    }
+
+    .contracts-header h2 {
+        font-size: var(--font-size-lg);
+    }
+
+    /* Make table scrollable on mobile */
+    .contracts-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .contracts-table thead,
+    .contracts-table tbody,
+    .contracts-table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+/* Column width optimization */
+.contracts-table thead th:nth-child(1),
+.contracts-table tbody td:nth-child(1) {
+    width: 30%;
+}
+
+.contracts-table thead th:nth-child(2),
+.contracts-table tbody td:nth-child(2) {
+    width: 25%;
+}
+
+.contracts-table thead th:nth-child(3),
+.contracts-table tbody td:nth-child(3) {
+    width: 10%;
+}
+
+.contracts-table thead th:nth-child(4),
+.contracts-table tbody td:nth-child(4) {
+    width: 10%;
+}
+
+.contracts-table thead th:nth-child(5),
+.contracts-table tbody td:nth-child(5) {
+    width: 12%;
+}
+
+.contracts-table thead th:nth-child(6),
+.contracts-table tbody td:nth-child(6) {
+    width: 13%;
+}
+
+/* Loading state */
+.contracts-table tbody tr.loading td {
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--color-text-tertiary);
+}
+
+/* Contract name with metadata */
+.contract-name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.contract-name-primary {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.contract-name-meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+}

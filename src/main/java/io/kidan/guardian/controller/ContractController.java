@@ -1,6 +1,5 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.entity.Contract;
 import io.kidan.guardian.entity.Dataset;
 import io.kidan.guardian.service.GuardianService;
 import io.kidan.guardian.web.dto.csv.CsvFormWrapper;
@@ -22,6 +21,13 @@ public class ContractController {
         this.session = session;
     }
 
+    @GetMapping("/guardian/contracts")
+    public String getAllContracts(Model model) {
+        model.addAttribute("all_contracts", guardianService.contractsPageViewList());
+
+        return "guardian/contract/all-contracts";
+    }
+
     /*
      1. Gets the dataset that was created from the session
      2. Created a new CsvFormWrapper class
@@ -35,7 +41,7 @@ public class ContractController {
         model.addAttribute("new_contract_form", newFormWrapper);
         model.addAttribute("created_dataset", createdDataset);
 
-        return "guardian/new-contract";
+        return "guardian/contract/new-contract";
     }
 
     /*
@@ -62,7 +68,7 @@ public class ContractController {
         model.addAttribute("created_dataset", createdDataset);
         model.addAttribute("created_contract_form", createdContractForm);
 
-        return "guardian/resource-review";
+        return "guardian/contract/resource-review";
     }
 
     /*
@@ -74,9 +80,7 @@ public class ContractController {
     public String allResourcesCreated() {
         Dataset dataset = (Dataset) session.getAttribute("created_dataset");
         CsvFormWrapper wrapper = (CsvFormWrapper) session.getAttribute("created_contract_form");
-        Contract contract = new Contract();
-
-        guardianService.createDatasetAndContract(dataset, contract, wrapper);
+        guardianService.createDatasetAndContract(dataset, wrapper);
 
         return "redirect:/guardian/datasets";
     }

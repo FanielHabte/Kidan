@@ -4,6 +4,7 @@ import io.kidan.guardian.enums.FileType;
 import io.kidan.nexus.entity.User;
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,7 +16,8 @@ import java.time.LocalDateTime;
 })
 
 public class Dataset implements Serializable {
-
+    @Serial
+    private static final long serialVersionUID = 1298617547297121295L;
     @Id @GeneratedValue (strategy = GenerationType.UUID)
     private String id;
     @Column (nullable = false)
@@ -24,6 +26,8 @@ public class Dataset implements Serializable {
     private FileType fileType;
     @ManyToOne @JoinColumn (name = "user_id", nullable = false)
     private User user;
+    @ManyToOne @JoinColumn (name = "updated_by", nullable = false)
+    private User updatedBy;
     @Column (nullable = false)
     private boolean isActive;
     @Column(updatable = false, nullable = false)
@@ -43,7 +47,7 @@ public class Dataset implements Serializable {
     }
 
     @PreUpdate
-    private void setUpdatedAt() {
+    private void updateEntity() {
         this.updatedAt = LocalDateTime.now();
     }
 
@@ -91,4 +95,11 @@ public class Dataset implements Serializable {
         return updatedAt;
     }
 
+    public User getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(User updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 }

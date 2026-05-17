@@ -20,13 +20,13 @@ public class AtriumController {
             model.addAttribute("Test", testInt);
         }
 
-        return "/atrium/home";
+        return "atrium/home";
     }
 
     @GetMapping("/settings")
     public String settingsPage() {
 
-        return "/atrium/settings";
+        return "atrium/settings";
     }
 
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit dataset - Kidan</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/guardian/edit-dataset.css">
+</head>
+<body>
+    <div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
+    <main class="edit-data-page-container">
+        <section class="edit-dataset-header">
+            <p th:text="'Dataset / ' + ${editable_dataset.name} + ' / Edit'" ></p>
+            <h2>Edit dataset</h2>
+            <div class="information-block">
+                <p>You can update the dataset name. Other properties like file type cannot be changes after creation.</p>
+            </div>
+        </section>
+        <section class="submission-form">
+            <h3>Dataset information</h3>
+            <form method="POST" th:action="@{/guardian/dataset/save}" class="input-form">
+                <label>
+                    <span>Dataset name <span>*</span></span>
+                    <input th:field="*{editable_dataset.name}">
+                </label>
+                <label style="display: none">
+                    <input th:field="*{editable_dataset.id}">
+                </label>
+                <label>
+                    <span>File type</span>
+                    <input th:field="*{editable_dataset.fileType}" disabled>
+                </label>
+                <label>
+                    <span>Created</span>
+                    <input th:field="*{editable_dataset.createdAt}" disabled>
+                </label>
+                <label>
+                    <span>Update at</span>
+                    <input th:field="*{editable_dataset.updatedAt}" disabled>
+                </label>
+                <label>
+                    <span>Created by</span>
+                    <input th:field="*{editable_dataset.user.name}" disabled>
+                </label>
+                <label>
+                    <span>Last updated by</span>
+                    <input th:field="*{editable_dataset.updatedBy.name}" disabled>
+                </label>
+                <div class="submission-action-container">
+                    <button>Cancel</button>
+                    <button type="submit">Save changes</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -20,7 +20,6 @@ body {
 .datasets-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: var(--spacing-xl);
     width: 80%;
     min-height: 100vh;
@@ -39,7 +38,6 @@ body {
     align-items: center;
     gap: var(--spacing-lg);
     width: 100%;
-    max-width: 800px;
 }
 
 .datasets-header h1,
@@ -85,7 +83,6 @@ body {
     grid-template-columns: 44px minmax(0, 1fr);
     gap: var(--spacing-md);
     width: 100%;
-    max-width: 800px;
     margin: 0;
 }
 
@@ -129,7 +126,6 @@ body {
 /* Table */
 .datasets-table-card {
     width: 100%;
-    max-width: 800px;
     overflow: hidden;
     background-color: var(--color-bg-base);
     border: 1px solid var(--color-border-light);
@@ -218,44 +214,4 @@ body {
 
 .dataset-health-danger {
     color: #9b2c2c;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .dataset-page-container {
-        flex-direction: column;
-    }
-
-    .datasets-container {
-        width: 100%;
-        padding: var(--spacing-lg);
-    }
-
-    .datasets-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .datasets-header form,
-    .datasets-button {
-        width: 100%;
-    }
-
-    .datasets-table-card {
-        overflow-x: auto;
-    }
-
-    .datasets-table {
-        min-width: 720px;
-    }
-}
-
-@media (max-width: 560px) {
-    .dataset-filter {
-        grid-template-columns: 1fr;
-    }
-
-    .dataset-filter-icon {
-        display: none;
-    }
 }

@@ -47,7 +47,7 @@ body * {
 
 .dd-header h1,
 .dd-header p,
-.dd-header form,
+.dd-header div,
 .dd-kpis h5,
 .dd-visualization h4,
 .dd-visualization p,
@@ -78,7 +78,7 @@ body * {
     color: var(--color-text-secondary);
 }
 
-.dd-header button {
+.dd-header a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -96,7 +96,7 @@ body * {
     transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.dd-header button:hover {
+.dd-header a:hover {
     background-color: var(--color-bg-hover);
     border-color: var(--color-primary);
 }

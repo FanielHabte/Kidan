@@ -7,19 +7,23 @@
     <link rel="stylesheet" href="/style/guardian/dataset-detail.css">
 </head>
 <body>
-<div th:replace="~{fragments/navigation::header-nav-bar}"></div>
+<div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
 <main class="dataset-detail-page">
     <div th:if="${error != null}">
         <p th:text="${error.toString()}"></p>
     </div>
+    <div>
+        <p th:text="'Dataset / ' + ${requested_dataset.name}"></p>
+    </div>
     <section class="dd-header">
         <div>
-            <h1 th:text="${requested_dataset.name}"></h1>
+            <h2 th:text="${requested_dataset.name}"></h2>
             <p th:text="${requested_dataset.fileType}"></p>
         </div>
-        <form>
-            <button>Submit file</button>
-        </form>
+        <div>
+            <a th:href="@{/guardian/dataset/edit/{id}(id=${requested_dataset.id})}">Edit dataset</a>
+            <a>Submit file</a>
+        </div>
     </section>
 
     <section class="dd-kpis">

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contracts - Kidan</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/guardian/all-contracts.css">
+</head>
+<body>
+<div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
+<main class="contracts-page-container">
+    <p>/ Contract</p>
+    <div class="contracts-header">
+        <h2>Contracts</h2>
+        <a>New contract</a>
+    </div>
+    <div class="contracts-kpis">
+        <div class="kpi-box">
+            <p>Total contracts</p>
+            <p th:text="${all_contracts.get(0).totalContracts}">18</p>
+        </div>
+        <div class="kpi-box">
+            <p>Active</p>
+            <p th:text="${all_contracts.get(0).activeContracts}"></p>
+        </div>
+        <div class="kpi-box">
+            <p>Inactive</p>
+            <p th:text="${all_contracts.get(0).inActiveContracts}"></p>
+        </div>
+        <div class="kpi-box">
+            <p>Avg rules</p>
+            <p th:text="${all_contracts.get(0).avgRules}"></p>
+        </div>
+    </div>
+    <table class="contracts-table">
+        <thead>
+            <tr>
+                <th>Contract name</th>
+                <th>Dataset</th>
+                <th>Rules</th>
+                <th>Version</th>
+                <th>Status</th>
+                <th>Last updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "contract : ${all_contracts}">
+                <td th:text = "${contract.contractName}"></td>
+                <td><a th:text = "${contract.datasetName}" th:href="@{/guardian/dataset/detail/{id}(id=${contract.datasetId})}"></a></td>
+                <td th:text = "${contract.rulesCount}"></td>
+                <td class="version-tag" th:text = "${'v' + contract.version}"></td>
+                <td class="status-badge" th:text = "${contract.status}"></td>
+                <td th:text = "${#temporals.format(contract.updatedAt, 'dd/MM/yyyy HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
