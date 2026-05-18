@@ -1,8 +1,10 @@
 package io.kidan.guardian.service;
 
 import io.kidan.fortress.service.UserAuthService;
+import io.kidan.guardian.entity.Contract;
 import io.kidan.guardian.entity.ContractsPageView;
 import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.repository.ContractDetailViewRepository;
 import io.kidan.guardian.repository.ContractRepository;
 import io.kidan.guardian.repository.ContractsPageViewRepository;
 import io.kidan.guardian.repository.DatasetRepository;
@@ -22,13 +24,18 @@ public class GuardianService {
     private final DatasetRepository datasetRepository;
     private final ContractRepository contractRepository;
     private final ContractsPageViewRepository contractsPageViewRepository;
+    private final ContractDetailViewRepository contractDetailViewRepository;
 
-    GuardianService(CsvFileService csvFileService, UserAuthService userAuthService, DatasetRepository datasetRepository, ContractRepository contractRepository, ContractsPageViewRepository contractsPageViewRepository) {
+    GuardianService(CsvFileService csvFileService, UserAuthService userAuthService, DatasetRepository datasetRepository,
+                    ContractRepository contractRepository, ContractsPageViewRepository contractsPageViewRepository,
+                    ContractDetailViewRepository contractDetailViewRepository
+    ) {
         this.csvFileService = csvFileService;
         this.userAuthService = userAuthService;
         this.datasetRepository = datasetRepository;
         this.contractRepository = contractRepository;
         this.contractsPageViewRepository = contractsPageViewRepository;
+        this.contractDetailViewRepository = contractDetailViewRepository;
     }
 
     public List<Dataset> getAllDataSets() {
@@ -85,10 +92,16 @@ public class GuardianService {
         datasetRepository.save(dataset);
     }
 
-    public List<ContractsPageView> contractsPageViewList (){
-        ContractsPageView contractsPageView = new ContractsPageView();
+    public List<ContractsPageView> getContractsList (){
 
         return contractsPageViewRepository.findAll();
+    }
+
+    public Contract getContractById (String id) {
+
+        return contractRepository.findByIdWithRulesAndCsvContracts(id).orElseThrow(
+                () -> new RuntimeException("Tried fetching contract, but was not able not find contract by " + id)
+        );
     }
 
 }

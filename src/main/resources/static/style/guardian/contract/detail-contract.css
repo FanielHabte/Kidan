@@ -1,0 +1,364 @@
+/* ========================================
+   CONTRACT DETAILS PAGE STYLES
+   Matching Kidan Design System
+======================================== */
+@import "../../variables.css";
+
+/* Page shell */
+body {
+    margin: 0;
+    background-color: var(--color-bg-base);
+    display: flex;
+    gap: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+/* Main container */
+.contract-detail-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    width: 80%;
+    min-height: 100vh;
+    padding: var(--spacing-2xl);
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-base);
+    line-height: var(--line-height-normal);
+}
+
+/* Breadcrumb / Page depth */
+.page-depth {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* Header */
+.contract-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.contract-detail-header h2 {
+    font-size: 28px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.contract-detail-header a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    min-height: 44px;
+    padding: 0 var(--spacing-lg);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-family: var(--font-family-base), sans-serif;
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.contract-detail-header a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* KPI boxes */
+.contract-detail-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.kpi-box {
+    background: var(--color-bg-sidebar);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.kpi-box p:first-child {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--spacing-xs) 0;
+    font-weight: var(--font-weight-semibold);
+}
+
+.kpi-box p:last-child {
+    font-size: 22px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Contract details card */
+.contract-detail-card {
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+.detail-row p:first-child {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    margin: 0;
+}
+
+.detail-row p:last-child {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-normal);
+    margin: 0;
+    line-height: var(--line-height-normal);
+}
+
+/* Special styling for specific rows */
+.detail-row p:first-child p:last-child {
+    font-weight: var(--font-weight-medium);
+}
+
+/* Attached dataset link */
+.detail-row p:last-child a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+}
+
+.detail-row p:last-child a:hover {
+    text-decoration: underline;
+}
+
+/* Status badge in details */
+.detail-row .status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    max-width: 70px;
+    /*min-height: 28px;*/
+    padding: 0 var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+}
+
+.detail-row .status-badge.active {
+    background-color: var(--color-bg-success);
+    color: var(--color-text-success);
+}
+
+.detail-row .status-badge.inactive {
+    background-color: var(--color-bg-danger);
+    color: var(--color-text-danger);
+}
+
+/* Created by avatar */
+.detail-row .creator-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.creator-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #d4f4e8;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+}
+
+/* Version tag in details */
+.detail-row .version-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    min-height: 28px;
+    padding: 0 var(--spacing-md);
+    background-color: var(--color-bg-sidebar);
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Validation rules table */
+table {
+    width: 100%;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+caption {
+    text-align: left;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    padding: var(--spacing-lg);
+    background: var(--color-bg-base);
+    caption-side: top;
+}
+
+table tbody {
+    background: var(--color-bg-base);
+}
+
+.contract-rule-row {
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.contract-rule-row:last-child {
+    border-bottom: none;
+}
+
+.contract-rule-row td {
+    padding: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.contract-rule-row:last-child td {
+    border-bottom: none;
+}
+
+/* First column - Rule name and description */
+.contract-rule-row td:first-child {
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-tight);
+}
+
+/* Table header row - if you add a thead */
+table thead tr {
+    background-color: var(--color-bg-sidebar);
+}
+
+table thead th {
+    padding: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Rule type badges in table */
+.contract-rule-row .rule-type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    min-height: 28px;
+    padding: 0 var(--spacing-md);
+    background-color: var(--color-bg-sidebar);
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Required/Optional badges in table */
+.contract-rule-row .rule-requirement {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    min-height: 28px;
+    padding: 0 var(--spacing-md);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+}
+
+.contract-rule-row .rule-requirement.required {
+    background-color: var(--color-bg-danger);
+    color: var(--color-text-danger);
+}
+
+.contract-rule-row .rule-requirement.optional {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-tertiary);
+    border: 1px solid var(--color-border-tertiary);
+}
+
+/* Added date column */
+.contract-rule-row td:last-child {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .contracts-kpis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contract-details-page-container {
+        padding: var(--spacing-lg);
+        width: 100%;
+    }
+
+    .contracts-kpis {
+        grid-template-columns: 1fr;
+    }
+
+    .contract-details-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contract-details-header a {
+        width: 100%;
+    }
+
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}

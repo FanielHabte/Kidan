@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract detail - Kidan</title>
+    <link rel="stylesheet" href="/style/fragments/navigation.css">
+    <link rel="stylesheet" href="/style/guardian/contract/detail-contract.css">
+</head>
+<body>
+<div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
+<main class="contract-detail-page-container">
+    <p class="page-depth">/ Contract / Contract name</p>
+    <div class="contract-detail-header">
+        <h2>Contract Name</h2>
+        <a>Edit Contract</a>
+    </div>
+    <div class="contract-detail-kpis">
+        <div class="kpi-box">
+            <p>Total rules</p>
+            <p th:text="${contract.contractsRuleList.size()}"></p>
+        </div>
+        <div class="kpi-box">
+            <p>Version</p>
+            <p th:text="'v' + ${contract.version}"></p>
+        </div>
+    </div>
+    <div class="contract-detail-card">
+        <div class="detail-row">
+            <p>Contract name</p>
+            <p th:text="${contract.csvContract.contractName}"></p>
+        </div>
+        <div class="detail-row">
+            <p>Attached dataset</p>
+            <p>
+                <a th:text="${contract.dataset.name}" th:href="@{/guardian/dataset/detail/{id}(id = ${contract.dataset.id})}"></a>
+            </p>
+        </div>
+        <div class="detail-row">
+            <p>Status</p>
+            <p
+                class="status-badge"
+                th:text="${contract.isActive}? 'Active': 'Inactive'"
+                th:classappend="${contract.isActive}? 'active':'inactive'"
+            ></p>
+        </div>
+        <div class="detail-row">
+            <p>Created by</p>
+            <p th:text="${contract.dataset.user.name}"></p>
+        </div>
+        <div class="detail-row">
+            <p>Created on</p>
+            <p th:text="${contract.createdAt}"></p>
+        </div>
+        <div class="detail-row">
+            <p>Last updated</p>
+            <p th:text="${contract.updatedAt}"></p>
+        </div>
+        <div class="detail-row version-tag">
+            <p>Version</p>
+            <p th:text="'v' + ${contract.version}"></p>
+        </div>
+        <div class="detail-row">
+            <p>Description</p>
+            <p th:text="${contract.csvContract.description}"></p>
+        </div>
+    </div>
+    <table>
+        <caption>Validation rules (12)</caption>
+        <thead>
+        <tr>
+            <th>Column name</th>
+            <th>Is required</th>
+            <th>Is unique</th>
+            <th>Rule Type</th>
+            <th>Rule Config</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="contract-rule-row" th:each=" contractRule : ${contract.contractsRuleList}">
+                <td>Column name</td>
+                <td>
+                    <p th:text="${contractRule.required} ? 'Required': 'Optional'"
+                       class="rule-requirement"
+                       th:classappend="${contractRule.required} ? 'required': 'optional'">
+                    </p>
+                </td>
+                <td th:text="${contractRule.unique} ? 'Unique' : 'Regular'"
+                    th:classappend="${contractRule.required} ? 'unique': 'regular'">
+                </td>
+                <td>
+                    <p th:text="${contractRule.ruleType.toString()}" class="rule-type"></p>
+                </td>
+                <td th:text="${contractRule.ruleConfig}">Rule Config</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -23,7 +24,7 @@ public class ContractController {
 
     @GetMapping("/guardian/contracts")
     public String getAllContracts(Model model) {
-        model.addAttribute("all_contracts", guardianService.contractsPageViewList());
+        model.addAttribute("all_contracts", guardianService.getContractsList());
 
         return "guardian/contract/all-contracts";
     }
@@ -83,6 +84,18 @@ public class ContractController {
         guardianService.createDatasetAndContract(dataset, wrapper);
 
         return "redirect:/guardian/datasets";
+    }
+
+    @GetMapping("/guardian/contract/detail/{id}")
+    public String getContractDetail(@PathVariable String id, Model model) {
+        try {
+            model.addAttribute("contract",guardianService.getContractById(id));
+        }
+        catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+        }
+
+        return "guardian/contract/detail-contract";
     }
 
 }

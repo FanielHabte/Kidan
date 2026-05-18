@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class CsvContract implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @ManyToOne() @JoinColumn(nullable = false, name = "contract_id")
+    @OneToOne() @JoinColumn(nullable = false, name = "contract_id")
     private Contract contract;
     @Column(nullable = false)
     private String contractName;

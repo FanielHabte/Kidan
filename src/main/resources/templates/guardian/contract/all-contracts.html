@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Contracts - Kidan</title>
     <link rel="stylesheet" href="/style/fragments/navigation.css">
-    <link rel="stylesheet" href="/style/guardian/all-contracts.css">
+    <link rel="stylesheet" href="/style/guardian/contract/all-contracts.css">
 </head>
 <body>
 <div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
@@ -45,7 +45,8 @@
         </thead>
         <tbody>
         <tr th:each="contract : ${all_contracts}">
-            <td th:text="${contract.contractName}"></td>
+            <td> <a th:text="${contract.contractName}"
+                    th:href="@{/guardian/contract/detail/{id}(id = ${contract.contractId})}"></a></td>
             <td><a th:text="${contract.datasetName}"
                    th:href="@{/guardian/dataset/detail/{id}(id=${contract.datasetId})}"></a></td>
             <td th:text="${contract.rulesCount}"></td>

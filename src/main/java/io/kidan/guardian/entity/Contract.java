@@ -3,6 +3,7 @@ package io.kidan.guardian.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table (catalog = "kidan", schema = "guardian")
@@ -19,6 +20,10 @@ public class Contract {
     private LocalDateTime createdAt;
     @Column (nullable = false)
     private LocalDateTime updatedAt;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
+    private List<ContractRule> contractsRuleList;
+    @OneToOne(mappedBy = "contract")
+    private CsvContract csvContract;
 
     public Contract() {
 
@@ -75,4 +80,19 @@ public class Contract {
         return updatedAt;
     }
 
+    public List<ContractRule> getContractsRuleList() {
+        return contractsRuleList;
+    }
+
+    public void setContractRuleList(List<ContractRule> contractRules) {
+        this.contractsRuleList = contractRules;
+    }
+
+    public CsvContract getCsvContract() {
+        return csvContract;
+    }
+
+    public void setCsvContract(CsvContract csvContract) {
+        this.csvContract = csvContract;
+    }
 }

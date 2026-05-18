@@ -59,7 +59,7 @@ public class DatasetController {
             model.addAttribute("error", exception.getMessage());
         }
 
-        return "guardian/dataset/dataset-detail";
+        return "guardian/dataset/detail-dataset";
     }
 
     @GetMapping("/guardian/dataset/edit/{id}")
