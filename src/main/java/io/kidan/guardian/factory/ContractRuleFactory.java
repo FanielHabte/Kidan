@@ -1,13 +1,13 @@
 package io.kidan.guardian.factory;
 
-import io.kidan.guardian.entity.Contract;
-import io.kidan.guardian.entity.ContractRule;
-import io.kidan.guardian.entity.CsvContract;
+import io.kidan.guardian.entity.contract.Contract;
+import io.kidan.guardian.entity.contractRule.ContractRule;
+import io.kidan.guardian.entity.contract.CsvContract;
 import io.kidan.guardian.enums.DataType;
 import io.kidan.guardian.enums.RuleType;
-import io.kidan.guardian.web.dto.csv.CsvFileStructure;
-import io.kidan.guardian.web.dto.csv.CsvRuleForm;
-import io.kidan.guardian.web.serlization.CsvSerializer;
+import io.kidan.guardian.dto.csv.CsvFileStructure;
+import io.kidan.guardian.dto.csv.CsvRuleForm;
+import io.kidan.guardian.service.csv.CsvSerializer;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

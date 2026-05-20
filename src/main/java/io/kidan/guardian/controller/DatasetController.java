@@ -1,7 +1,7 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.entity.Dataset;
-import io.kidan.guardian.service.GuardianService;
+import io.kidan.guardian.entity.dataset.Dataset;
+import io.kidan.guardian.service.dataset.DatasetService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class DatasetController {
-    private final GuardianService guardianService;
+    private final DatasetService datasetService;
     private final HttpSession session;
 
-    DatasetController(GuardianService guardianService, HttpSession session) {
-        this.guardianService = guardianService;
+    DatasetController(DatasetService datasetService, HttpSession session) {
+        this.datasetService = datasetService;
         this.session = session;
     }
 
     // Fetches and passes all datasets
     @GetMapping("/guardian/datasets")
     public String datasetsListPage(Model model) {
-        model.addAttribute("all_datasets", guardianService.getAllDataSets());
+        model.addAttribute("all_datasets", datasetService.findAllDataSets());
 
         return "guardian/dataset/all-datasets";
     }
@@ -53,7 +53,7 @@ public class DatasetController {
     @GetMapping("/guardian/dataset/detail/{id}")
     public String getDatasetDetail(@PathVariable String id, Model model) {
         try {
-            Dataset requestedDataset = guardianService.getDatasetById(id);
+            Dataset requestedDataset = datasetService.findDatasetById(id);
             model.addAttribute("requested_dataset", requestedDataset);
         } catch (RuntimeException exception) {
             model.addAttribute("error", exception.getMessage());
@@ -64,7 +64,7 @@ public class DatasetController {
 
     @GetMapping("/guardian/dataset/edit/{id}")
     public String editDataset(@PathVariable String id, Model model) {
-        Dataset editableDataset = guardianService.getDatasetById(id);
+        Dataset editableDataset = datasetService.findDatasetById(id);
         model.addAttribute("editable_dataset", editableDataset);
 
         return "guardian/dataset/edit-dataset";
@@ -72,7 +72,7 @@ public class DatasetController {
 
     @PostMapping("/guardian/dataset/save")
     public String saveEditedDataset(@RequestParam String id, @RequestParam String name) {
-        guardianService.editDataset(id, name);
+        datasetService.updateDatasetNameById(id, name);
 
         return "redirect:/guardian/datasets";
     }

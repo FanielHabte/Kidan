@@ -1,6 +1,6 @@
 package io.kidan.guardian.validation;
 
-import io.kidan.guardian.web.dto.csv.CsvFormWrapper;
+import io.kidan.guardian.dto.csv.CsvFormWrapper;
 import org.springframework.stereotype.Component;
 
 @Component

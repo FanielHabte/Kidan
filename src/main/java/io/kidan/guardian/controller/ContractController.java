@@ -1,8 +1,9 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.entity.Dataset;
-import io.kidan.guardian.service.GuardianService;
-import io.kidan.guardian.web.dto.csv.CsvFormWrapper;
+import io.kidan.guardian.entity.dataset.Dataset;
+import io.kidan.guardian.dto.csv.CsvFormWrapper;
+import io.kidan.guardian.service.contract.ContractService;
+import io.kidan.guardian.service.csv.CsvContractService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +15,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ContractController {
 
-    private final GuardianService guardianService;
+    private final ContractService contractService;
+    private final CsvContractService csvFileService;
     private final HttpSession session;
 
-    ContractController(GuardianService guardianService, HttpSession session) {
-        this.guardianService = guardianService;
+    ContractController(ContractService contractService
+                        , CsvContractService csvFileService
+                        , HttpSession session) {
+        this.contractService = contractService;
+        this.csvFileService = csvFileService;
         this.session = session;
     }
 
     @GetMapping("/guardian/contracts")
     public String getAllContracts(Model model) {
-        model.addAttribute("all_contracts", guardianService.getContractsList());
+        model.addAttribute("all_contracts", contractService.findAllContractPageSummaries());
 
         return "guardian/contract/all-contracts";
     }
@@ -81,7 +86,7 @@ public class ContractController {
     public String allResourcesCreated() {
         Dataset dataset = (Dataset) session.getAttribute("created_dataset");
         CsvFormWrapper wrapper = (CsvFormWrapper) session.getAttribute("created_contract_form");
-        guardianService.createDatasetAndContract(dataset, wrapper);
+        csvFileService.createDatasetAndContract(dataset, wrapper);
 
         return "redirect:/guardian/datasets";
     }
@@ -89,7 +94,7 @@ public class ContractController {
     @GetMapping("/guardian/contract/detail/{id}")
     public String getContractDetail(@PathVariable String id, Model model) {
         try {
-            model.addAttribute("contract",guardianService.getContractById(id));
+            model.addAttribute("contract",contractService.findContractById(id));
         }
         catch (Exception e) {
             model.addAttribute("error", e.getMessage());

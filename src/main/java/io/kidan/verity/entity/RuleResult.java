@@ -1,6 +1,6 @@
 package io.kidan.verity.entity;
 
-import io.kidan.guardian.entity.ContractRule;
+import io.kidan.guardian.entity.contractRule.ContractRule;
 import jakarta.persistence.*;
 import io.kidan.spectra.entity.PipelineRun;
 import io.kidan.verity.enums.Result;
