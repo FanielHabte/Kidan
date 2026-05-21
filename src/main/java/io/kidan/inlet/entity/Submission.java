@@ -1,6 +1,6 @@
 package io.kidan.inlet.entity;
 
-import io.kidan.guardian.entity.dataset.Dataset;
+import io.kidan.guardian.entity.Dataset;
 import io.kidan.nexus.entity.User;
 import jakarta.persistence.*;
 import io.kidan.inlet.enums.SubmissionStatus;

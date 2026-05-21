@@ -1,10 +1,13 @@
-package io.kidan.guardian.service.contract;
+package io.kidan.guardian.service;
 
-import io.kidan.guardian.entity.contract.Contract;
+import io.kidan.fortress.service.UserAuthService;
+import io.kidan.guardian.entity.Contract;
 import io.kidan.guardian.entity.contract.ContractsPageView;
-import io.kidan.guardian.entity.dataset.Dataset;
-import io.kidan.guardian.repository.contract.ContractRepository;
-import io.kidan.guardian.repository.contract.ContractsPageViewRepository;
+import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.repository.ContractRepository;
+import io.kidan.guardian.repository.views.ContractsPageViewRepository;
+import io.kidan.nexus.entity.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +16,14 @@ import java.util.List;
 public class ContractService {
     private final ContractRepository contractRepository;
     private final ContractsPageViewRepository contractsPageViewRepository;
+    private final UserAuthService userAuthService;
 
-    public ContractService(ContractRepository contractRepository, ContractsPageViewRepository contractsPageViewRepository) {
+    public ContractService(ContractRepository contractRepository,
+                           ContractsPageViewRepository contractsPageViewRepository,
+                           UserAuthService userAuthService) {
         this.contractRepository = contractRepository;
         this.contractsPageViewRepository = contractsPageViewRepository;
+        this.userAuthService = userAuthService;
     }
 
     public Contract findContractById(String id) throws RuntimeException {
@@ -38,7 +45,13 @@ public class ContractService {
     }
 
     public void saveContract(Contract contract, Dataset dataset) {
+        User user = userAuthService.AuthenticatedUser()
+                .orElseThrow(
+                        () -> new UsernameNotFoundException(
+                                "Authenticated User not found"
+                        ));
         contract.setDataset(dataset);
+        contract.setUpdatedBy(user);
         contractRepository.save(contract);
     }
 

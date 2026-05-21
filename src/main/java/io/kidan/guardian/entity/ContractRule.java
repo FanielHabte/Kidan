@@ -1,6 +1,5 @@
-package io.kidan.guardian.entity.contractRule;
+package io.kidan.guardian.entity;
 
-import io.kidan.guardian.entity.contract.Contract;
 import io.kidan.guardian.enums.RuleType;
 import jakarta.persistence.*;
 
@@ -15,6 +14,8 @@ public class ContractRule {
     private Contract contract;
     @Enumerated (EnumType.STRING) @Column(nullable = false)
     private RuleType ruleType;
+    @Column(updatable = false, nullable = false)
+    private String ruleConfig;
     @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
@@ -64,6 +65,13 @@ public class ContractRule {
         return updatedAt;
     }
 
+    public String getRuleConfig() {
+        return ruleConfig;
+    }
+
+    public void setRuleConfig(String ruleConfig) {
+        this.ruleConfig = ruleConfig;
+    }
 }
 
 

@@ -1,7 +1,8 @@
 package io.kidan.guardian.entity.contract;
 
-import io.kidan.guardian.entity.dataset.Dataset;
-import io.kidan.guardian.entity.contractRule.ContractRule;
+import io.kidan.guardian.entity.Contract;
+import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.entity.ContractRule;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
 

@@ -1,4 +1,4 @@
-package io.kidan.guardian.repository.contract;
+package io.kidan.guardian.repository.views;
 
 import io.kidan.guardian.entity.contract.ContractDetailView;
 import org.springframework.data.jpa.repository.JpaRepository;

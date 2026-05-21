@@ -1,6 +1,6 @@
-package io.kidan.guardian.repository.dataset;
+package io.kidan.guardian.repository;
 
-import io.kidan.guardian.entity.dataset.Dataset;
+import io.kidan.guardian.entity.Dataset;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;

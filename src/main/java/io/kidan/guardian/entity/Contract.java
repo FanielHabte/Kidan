@@ -1,7 +1,6 @@
-package io.kidan.guardian.entity.contract;
+package io.kidan.guardian.entity;
 
-import io.kidan.guardian.entity.dataset.Dataset;
-import io.kidan.guardian.entity.contractRule.ContractRule;
+import io.kidan.nexus.entity.User;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,6 +19,11 @@ public class Contract {
     private int version;
     @Column (nullable = false)
     private boolean isActive;
+    // {delimiter:""}
+    @Column(nullable = false)
+    private String contractConfig;
+    @OneToOne() @JoinColumn(name = "updated_by", nullable = false)
+    private User updatedBy;
     @Column (updatable = false, nullable = false)
     private LocalDateTime createdAt;
     @Column (nullable = false)
@@ -29,11 +33,8 @@ public class Contract {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
     private List<ContractRule> contractsRuleList;
-    @OneToOne(mappedBy = "contract")
-    private CsvContract csvContract;
 
     public Contract() {
-
     }
 
     @PrePersist
@@ -91,16 +92,8 @@ public class Contract {
         return contractsRuleList;
     }
 
-    public void setContractRuleList(List<ContractRule> contractRules) {
+    public void setContractsRuleList(List<ContractRule> contractRules) {
         this.contractsRuleList = contractRules;
-    }
-
-    public CsvContract getCsvContract() {
-        return csvContract;
-    }
-
-    public void setCsvContract(CsvContract csvContract) {
-        this.csvContract = csvContract;
     }
 
     public String getName() {
@@ -117,5 +110,21 @@ public class Contract {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(User updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public String getContractConfig() {
+        return contractConfig;
+    }
+
+    public void setContractConfig(String contractConfig) {
+        this.contractConfig = contractConfig;
     }
 }

@@ -1,8 +1,8 @@
-package io.kidan.guardian.service.dataset;
+package io.kidan.guardian.service;
 
 import io.kidan.fortress.service.UserAuthService;
-import io.kidan.guardian.entity.dataset.Dataset;
-import io.kidan.guardian.repository.dataset.DatasetRepository;
+import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.repository.DatasetRepository;
 import io.kidan.nexus.entity.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -45,6 +45,7 @@ public class DatasetService {
                                     "Authenticated User not found"
                     ));
         dataset.setUser(user);
+        dataset.setUpdatedBy(user);
         datasetRepository.save(dataset);
     }
 

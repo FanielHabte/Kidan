@@ -5,6 +5,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ DTO used to collect data from the CSV type contract submission
+    1. This the file structure (include: contract_name, description, delimiter)
+    2. List of all fields that a user can input for each column type
+*/
 public class CsvFormWrapper implements Serializable {
     @Serial
     private static final long serialVersionUID = -2388477470216719934L;

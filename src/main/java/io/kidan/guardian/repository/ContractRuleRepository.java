@@ -1,6 +1,6 @@
-package io.kidan.guardian.repository.contractRule;
+package io.kidan.guardian.repository;
 
-import io.kidan.guardian.entity.contractRule.ContractRule;
+import io.kidan.guardian.entity.ContractRule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 

@@ -6,12 +6,12 @@ select
      , cr.id                                    as contract_id
      , count(cr.id) over(partition by c.id)     as rules_count
      , count(case
-                 when cr.is_required
-                     is true then 1 end)
+                 when cr.rule_config::jsonb -> 'is_required'
+                     = 'true' then 1 end)
        over(partition by c.id)                  as is_required_count
      , count(case
-                 when cr.is_unique
-                     is true then 1 end)
+                 when cr.rule_config::jsonb -> 'is_unique'
+                     = 'true' then 1 end)
        over(partition by c.id)                  as is_unique_count
 from guardian.contract c
          left join guardian.contract_rule cr

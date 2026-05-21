@@ -1,6 +1,7 @@
 package io.kidan.inlet.service;
 
-import io.kidan.guardian.entity.dataset.Dataset;
+import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.service.DatasetService;
 import io.kidan.inlet.entity.Submission;
 import io.kidan.inlet.repository.InletRepository;
 import org.springframework.stereotype.Service;
@@ -10,11 +11,11 @@ import java.util.List;
 @Service
 public class InletService {
 
-    private final GuardianService guardianService;
+    private final DatasetService datasetService;
     private final InletRepository inletRepository;
 
-    InletService (GuardianService guardianService, InletRepository inletRepository) {
-        this.guardianService = guardianService;
+    InletService (DatasetService datasetService, InletRepository inletRepository) {
+        this.datasetService = datasetService;
         this.inletRepository = inletRepository;
     }
 
@@ -32,7 +33,7 @@ public class InletService {
 
     public List<Dataset> getDatasetList() {
 
-        return guardianService.getAllDataSets();
+        return datasetService.findAllDataSets();
     }
 
 }

@@ -1,9 +1,9 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.entity.dataset.Dataset;
 import io.kidan.guardian.dto.csv.CsvFormWrapper;
-import io.kidan.guardian.service.contract.ContractService;
-import io.kidan.guardian.service.csv.CsvContractService;
+import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.service.ContractService;
+import io.kidan.guardian.service.special.FileStorageService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ContractController {
 
     private final ContractService contractService;
-    private final CsvContractService csvFileService;
+    private final FileStorageService fileStorageService;
     private final HttpSession session;
 
     ContractController(ContractService contractService
-                        , CsvContractService csvFileService
+                        , FileStorageService fileStorageService
                         , HttpSession session) {
         this.contractService = contractService;
-        this.csvFileService = csvFileService;
+        this.fileStorageService = fileStorageService;
         this.session = session;
     }
 
@@ -86,7 +86,7 @@ public class ContractController {
     public String allResourcesCreated() {
         Dataset dataset = (Dataset) session.getAttribute("created_dataset");
         CsvFormWrapper wrapper = (CsvFormWrapper) session.getAttribute("created_contract_form");
-        csvFileService.createDatasetAndContract(dataset, wrapper);
+        fileStorageService.saveCsvFile(dataset, wrapper);
 
         return "redirect:/guardian/datasets";
     }

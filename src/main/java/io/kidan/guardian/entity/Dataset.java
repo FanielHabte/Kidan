@@ -1,4 +1,4 @@
-package io.kidan.guardian.entity.dataset;
+package io.kidan.guardian.entity;
 
 import io.kidan.guardian.enums.FileType;
 import io.kidan.nexus.entity.User;

@@ -1,7 +1,7 @@
-package io.kidan.guardian.service.contractRule;
+package io.kidan.guardian.service;
 
-import io.kidan.guardian.entity.contractRule.ContractRule;
-import io.kidan.guardian.repository.contractRule.ContractRuleRepository;
+import io.kidan.guardian.entity.ContractRule;
+import io.kidan.guardian.repository.ContractRuleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

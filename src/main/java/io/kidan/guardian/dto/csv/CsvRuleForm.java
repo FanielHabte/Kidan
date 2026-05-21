@@ -8,8 +8,8 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /*
-    TODO 1. Amend the ContractRuleForm DTO to include all fields and a type column to identify the type
-    TODO 2. Create getters and setters for all the new columns
+    DTO used to collect data of all input fields that a
+    user might use when creating a contract rule.
 */
 
 public class CsvRuleForm implements Serializable {

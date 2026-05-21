@@ -1,7 +1,7 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.entity.dataset.Dataset;
-import io.kidan.guardian.service.dataset.DatasetService;
+import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.service.DatasetService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

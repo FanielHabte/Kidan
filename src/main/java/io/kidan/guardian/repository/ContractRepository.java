@@ -1,6 +1,6 @@
-package io.kidan.guardian.repository.contract;
+package io.kidan.guardian.repository;
 
-import io.kidan.guardian.entity.contract.Contract;
+import io.kidan.guardian.entity.Contract;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.lang.NonNull;
@@ -13,7 +13,6 @@ public interface ContractRepository extends JpaRepository <Contract, String> {
 
     @Query("SELECT c FROM Contract c " +
             "LEFT JOIN FETCH c.contractsRuleList " +
-            "LEFT JOIN FETCH c.csvContract " +
             "WHERE c.id = :id ")
     Optional<Contract> findByIdWithRulesAndCsvContracts (String id);
 
