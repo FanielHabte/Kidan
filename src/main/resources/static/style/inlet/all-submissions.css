@@ -218,6 +218,7 @@ body {
     color: var(--color-text-secondary);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
+    vertical-align: middle;
 }
 
 .submissions-health {

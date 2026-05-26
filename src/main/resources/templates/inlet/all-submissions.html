@@ -33,23 +33,28 @@
         <div class="submissions-table-card">
             <table class="submissions-table">
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Health</th>
-                    <th>Submissions</th>
-                    <th>Last activity</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Dataset</th>
+                        <th>Health</th>
+                        <th>Status</th>
+                        <th>Submitted</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><a></a>
-                    </td>
-                    <td><span class="submissions-type-pill"></span></td>
-                    <td><span class="submissions-health submissions-health-good">94</span></td>
-                    <td>24</td>
-                    <td>4 min ago</td>
-                </tr>
+                    <tr th:each="submission : ${submissions}">
+                        <td th:text="${submission.fileName}"></td>
+                        <td>
+                            <a th:text="${submission.dataset.name}"
+                               th:href="@{/guardian/dataset/detail/{id}(id = ${submission.dataset.id})}">
+                            </a>
+                        </td>
+                        <td>
+                            <span th:text="${submission.status}" class="submissions-type-pill"></span>
+                        </td>
+                        <td><span class="submissions-health submissions-health-good">-</span></td>
+                        <td th:text="${#temporals.format(submission.createdAt, 'MMM d, h:mm a')}"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

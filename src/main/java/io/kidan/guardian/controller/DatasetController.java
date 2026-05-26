@@ -2,6 +2,7 @@ package io.kidan.guardian.controller;
 
 import io.kidan.guardian.entity.Dataset;
 import io.kidan.guardian.service.DatasetService;
+import io.kidan.inlet.service.InletService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class DatasetController {
     private final DatasetService datasetService;
     private final HttpSession session;
+    private final InletService inletService;
 
-    DatasetController(DatasetService datasetService, HttpSession session) {
+    DatasetController(DatasetService datasetService, HttpSession session, InletService inletService) {
         this.datasetService = datasetService;
         this.session = session;
+        this.inletService = inletService;
     }
 
     // Fetches and passes all datasets
@@ -55,6 +58,7 @@ public class DatasetController {
         try {
             Dataset requestedDataset = datasetService.findDatasetById(id);
             model.addAttribute("requested_dataset", requestedDataset);
+            model.addAttribute("related_submissions", inletService.findAllSubmissionByDatasetId(id));
         } catch (RuntimeException exception) {
             model.addAttribute("error", exception.getMessage());
         }

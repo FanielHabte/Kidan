@@ -57,7 +57,7 @@
                 <span class="status-badge" th:classappend="${contract.status.toUpperCase() == 'ACTIVE'} ? 'active' : 'inactive'"
                     th:text="${contract.status}"></span>
             </td>
-            <td th:text="${#temporals.format(contract.updatedAt, 'dd/MM/yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(contract.updatedAt, 'MMM d, h:mm a')}"></td>
         </tr>
         </tbody>
     </table>

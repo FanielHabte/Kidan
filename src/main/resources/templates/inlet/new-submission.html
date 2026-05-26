@@ -8,48 +8,56 @@
     <link rel="stylesheet" href="/style/inlet/new-submission.css">
 </head>
 <body>
-<div th:replace="~{fragments/reusable/navigation :: header-nav-bar}" th:object="${new_submission}"></div>
-<form class="submission-container">
-    <div class="page-depth">
-        <p>Submission / New</p>
-    </div>
-    <div class="submission-header">
-        <h1>New submission</h1>
-        <a class="submission-button" th:href="@{/guardian/dataset/new}">New submission</a>
-    </div>
-    <div class="choos-resources">
-        <label class="select-contract" for="contract">
-            <span>Dataset</span>
-            <div class="contract-input-wrapper">
-                <select id="contract" th:field="*{new_submission.dataset.id}">
-                    <option value="" disabled selected>Choose dataset</option>
-                    <option th:each="dataset : ${all_datasets}"
-                            th:text="${dataset.name}"
-                            th:value="${dataset.id}">
-                    </option>
-                </select>
-                <button>Remove</button>
-            </div>
-        </label>
-    </div>
+    <div th:replace="~{fragments/reusable/navigation :: header-nav-bar}"></div>
     <div>
-        <label class="file-upload" for="upload-file">
-            <span>File</span>
-            <div class="file-upload-wrapper">
-                <input id="upload-file" type="file">
-                <button>Remove</button>
+        <div class="page-depth">
+            <p>Submission / New</p>
+        </div>
+        <div class="submission-header">
+            <h1>New submission</h1>
+        </div>
+        <div th:if="${error}">
+            <p th:text="${error}"></p>
+        </div>
+        <form class="submission-container" method="POST"
+              th:action="@{/inlet/submission/new/file/upload}"
+              enctype="multipart/form-data"
+              th:object="${new_submission}">
+            <div class="choos-resources">
+                <label class="select-contract" for="contract">
+                    <span>Dataset</span>
+                    <div class="contract-input-wrapper">
+                        <select id="contract" th:field="*{dataset.id}">
+                            <option value="" disabled>Choose dataset</option>
+                            <option th:each="dataset : ${all_datasets}"
+                                    th:text="${dataset.name}"
+                                    th:value="${dataset.id}">
+                            </option>
+                        </select>
+                        <button type="button">Remove</button>
+                    </div>
+                </label>
             </div>
-        </label>
+            <div>
+                <label class="file-upload" for="upload-file">
+                    <span>File</span>
+                    <div class="file-upload-wrapper">
+                        <input id="upload-file" type="file" name="file">
+                        <button>Remove</button>
+                    </div>
+                </label>
+            </div>
+            <div class="enable-qa">
+                <p>Options</p>
+                <label class="enable-qa-wrapper" for="enable-qa">
+                    <input id="enable-qa" type="checkbox" th:field="*{qaEnabled}">
+                    <span>Enable natural language Q&A for this file</span>
+                </label>
+            </div>
+            <button type="submit">Validate & Submit</button>
+        </form>
     </div>
-    <div class="enable-qa">
-        <p>Options</p>
-        <label class="enable-qa-wrapper" for="enable-qa">
-            <input id="enable-qa" type="checkbox" th:field="${new_submission.qaEnabled}">
-            <span>Enable natural language Q&A for this file</span>
-        </label>
-    </div>
-    <button type="submit">Validate & Submit</button>
-</form>
+
 </body>
 <script th:src="@{script/submission-page.js}"></script>
 </html>

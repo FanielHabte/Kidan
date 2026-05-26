@@ -32,8 +32,10 @@
             <span class="dd-kpi-number">75.5%</span>
         </div>
         <div class="dd-kpi-submissions">
-            <h5>Submissions (30d)</h5>
-            <span class="dd-kpi-number">12</span>
+            <h5>Submissions</h5>
+            <span class="dd-kpi-number"
+                  th:text="${related_submissions.size()}">
+            </span>
         </div>
         <div class="dd-kpi-rules">
             <h5>Rules</h5>
@@ -60,13 +62,13 @@
             <p>See all</p>
         </div>
         <div class="dd-recent-submission-list">
-            <div class="dd-recent-submission">
+            <div class="dd-recent-submission" th:each="submission : ${related_submissions} ">
                 <div class="dd-recent-submission-name-time">
-                    <p>file name</p>
-                    <p>username*4mins ago</p>
+                    <p th:text="${submission.fileName}">file name</p>
+                    <p th:text="${submission.user.name} + ' - ' + ${#temporals.format(submission.createdAt, 'MMM d, h:mm a')}"></p>
                 </div>
-                <p>98</p>
-                <p>Passed</p>
+                <p>-</p>
+                <p th:text="${submission.status}">Passed</p>
             </div>
         </div>
     </section>

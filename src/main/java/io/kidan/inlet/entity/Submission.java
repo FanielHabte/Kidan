@@ -40,6 +40,7 @@ public class Submission {
     public void setCreatedAt() {
         this.createdAt = LocalDateTime.now();
         this.isActive = true;
+        this.status = SubmissionStatus.PASSED;
     }
 
     public String getId() {
