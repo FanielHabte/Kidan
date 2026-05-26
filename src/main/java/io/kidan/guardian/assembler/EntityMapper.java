@@ -1,7 +1,11 @@
 package io.kidan.guardian.assembler;
 
-import io.kidan.guardian.dto.csv.CsvFileStructure;
-import io.kidan.guardian.dto.csv.CsvRuleForm;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+import io.kidan.guardian.dto.csv.request.CsvFileStructure;
+import io.kidan.guardian.dto.csv.request.CsvRuleForm;
+import io.kidan.guardian.dto.csv.response.*;
 import io.kidan.guardian.entity.Contract;
 import io.kidan.guardian.entity.ContractRule;
 import io.kidan.guardian.enums.DataType;
@@ -55,6 +59,34 @@ public class EntityMapper {
         return contractRuleList;
     }
 
+    public CsvContractRule buildCsvContractRule (ContractRule contractRule) {
+        RuntimeTypeAdapterFactory<CsvContractRule> runtimeTypeAdapterFactory =
+                RuntimeTypeAdapterFactory.of(CsvContractRule.class, "dataType")
+                        .registerSubtype(StringContractRule.class, "STRING")
+                        .registerSubtype(DateContractRule.class, "DATE")
+                        .registerSubtype(NumericContractRule.class, "NUMERIC");
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
+                .create();
+        return gson.fromJson(contractRule.getRuleConfig(), CsvContractRule.class);
+    }
 
+    public List<CsvValidationObject> buildCsvValidationObjects (List<ContractRule> contractRuleList) {
+        List<CsvValidationObject> csvValidationObjectList = new ArrayList<>();
+
+        for (ContractRule contractRule: contractRuleList) {
+            CsvContractRule csvContractRule = buildCsvContractRule(contractRule);
+            CsvValidationObject csvValidationObject = new CsvValidationObject(
+                    csvContractRule.getColumnName(),
+                    csvContractRule.getIsRequired(),
+                    csvContractRule.getIsUnique(),
+                    csvContractRule.getRuleType(),
+                    csvContractRule.getCustomRuleConfig()
+            );
+            csvValidationObjectList.add(csvValidationObject);
+        }
+
+        return csvValidationObjectList;
+    }
 
 }

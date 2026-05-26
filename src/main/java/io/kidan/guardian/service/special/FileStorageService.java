@@ -1,7 +1,7 @@
 package io.kidan.guardian.service.special;
 
 import io.kidan.guardian.assembler.EntityMapper;
-import io.kidan.guardian.dto.csv.CsvFormWrapper;
+import io.kidan.guardian.dto.csv.request.CsvFormWrapper;
 import io.kidan.guardian.entity.Contract;
 import io.kidan.guardian.entity.ContractRule;
 import io.kidan.guardian.entity.Dataset;

@@ -1,14 +1,13 @@
 package io.kidan.guardian.service.serializer;
 
 import com.google.gson.Gson;
-import io.kidan.guardian.dto.csv.CsvFileStructure;
-import io.kidan.guardian.dto.csv.CsvRuleForm;
+import io.kidan.guardian.dto.csv.request.CsvFileStructure;
+import io.kidan.guardian.dto.csv.request.CsvRuleForm;
 import io.kidan.guardian.service.special.GuardianSerializer;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CsvSerializer implements GuardianSerializer<CsvRuleForm, CsvFileStructure> {
-
 
     @Override
     public String getRuleConfig(CsvRuleForm csvRuleForm) {
@@ -24,6 +23,7 @@ public class CsvSerializer implements GuardianSerializer<CsvRuleForm, CsvFileStr
         formInputObject.setDescription(null);
         return gson.toJson(formInputObject);
     }
+
 
 
 }

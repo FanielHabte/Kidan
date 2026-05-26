@@ -1,4 +1,4 @@
-package io.kidan.guardian.dto.csv;
+package io.kidan.guardian.dto.csv.request;
 
 import java.io.Serial;
 import java.io.Serializable;

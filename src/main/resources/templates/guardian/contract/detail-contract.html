@@ -17,7 +17,7 @@
     <div class="contract-detail-kpis">
         <div class="kpi-box">
             <p>Total rules</p>
-            <p th:text="${contract.contractsRuleList.size()}"></p>
+            <p th:text="${csv_validation_objects.size()}"></p>
         </div>
         <div class="kpi-box">
             <p>Version</p>
@@ -27,7 +27,7 @@
     <div class="contract-detail-card">
         <div class="detail-row">
             <p>Contract name</p>
-            <p th:text="${contract.csvContract.contractName}"></p>
+            <p th:text="${contract.name}"></p>
         </div>
         <div class="detail-row">
             <p>Attached dataset</p>
@@ -49,11 +49,11 @@
         </div>
         <div class="detail-row">
             <p>Created on</p>
-            <p th:text="${contract.createdAt}"></p>
+            <p th:text="${#temporals.format(contract.createdAt, 'MMM d, h:mm a')}"></p>
         </div>
         <div class="detail-row">
             <p>Last updated</p>
-            <p th:text="${contract.updatedAt}"></p>
+            <p th:text="${#temporals.format(contract.updatedAt, 'MMM d, h:mm a')}"></p>
         </div>
         <div class="detail-row version-tag">
             <p>Version</p>
@@ -61,36 +61,38 @@
         </div>
         <div class="detail-row">
             <p>Description</p>
-            <p th:text="${contract.csvContract.description}"></p>
+            <p th:text="${contract.description}"></p>
         </div>
     </div>
     <table>
-        <caption>Validation rules (12)</caption>
+        <caption th:text="'Validation rules (' + ${csv_validation_objects.size()} + ')'" ></caption>
         <thead>
-        <tr>
-            <th>Column name</th>
-            <th>Is required</th>
-            <th>Is unique</th>
-            <th>Rule Type</th>
-            <th>Rule Config</th>
-        </tr>
+            <tr>
+                <th>Column name</th>
+                <th>Is required</th>
+                <th>Is unique</th>
+                <th>Rule Type</th>
+                <th>Rule Config</th>
+            </tr>
         </thead>
         <tbody>
-            <tr class="contract-rule-row" th:each=" contractRule : ${contract.contractsRuleList}">
-                <td>Column name</td>
+            <tr class="contract-rule-row" th:each=" contract_validation : ${csv_validation_objects}">
                 <td>
-                    <p th:text="${contractRule.required} ? 'Required': 'Optional'"
+                    <p th:text="${contract_validation.columnName()}"></p>
+                </td>
+                <td>
+                    <p th:text="${contract_validation.isRequired()} ? 'Required': 'Optional'"
                        class="rule-requirement"
-                       th:classappend="${contractRule.required} ? 'required': 'optional'">
+                       th:classappend="${contract_validation.isRequired()} ? 'required': 'optional'">
                     </p>
                 </td>
-                <td th:text="${contractRule.unique} ? 'Unique' : 'Regular'"
-                    th:classappend="${contractRule.required} ? 'unique': 'regular'">
+                <td th:text="${contract_validation.isUnique()} ? 'Unique' : 'Regular'"
+                    th:classappend="${contract_validation.isUnique()} ? 'unique': 'regular'">
                 </td>
                 <td>
-                    <p th:text="${contractRule.ruleType.toString()}" class="rule-type"></p>
+                    <p th:text="${contract_validation.ruleType().initCap()}" class="rule-type"></p>
                 </td>
-                <td th:text="${contractRule.ruleConfig}">Rule Config</td>
+                <td th:text="${contract_validation.ruleConfig()}">Rule Config</td>
             </tr>
         </tbody>
     </table>

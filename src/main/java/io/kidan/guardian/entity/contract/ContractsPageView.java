@@ -1,10 +1,10 @@
 package io.kidan.guardian.entity.contract;
 
+import com.google.errorprone.annotations.Immutable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.Immutable;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ public class ContractsPageView implements Serializable {
     private String contractId;
     @Column(name = "dataset_id", nullable = false)
     private String datasetId;
-    @Column(name = "contract_name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String contractName;
     @Column(name = "dataset_name", nullable = false)
     private String datasetName;

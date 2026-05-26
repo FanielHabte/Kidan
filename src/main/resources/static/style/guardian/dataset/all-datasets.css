@@ -182,21 +182,36 @@ body {
 }
 
 .datasets-table td:first-child {
-    max-width: 220px;
     text-align: left;
+    gap: 5px;
+    max-width: 220px;
     color: var(--color-text-primary);
     font-size: var(--font-size-sm);
-    line-height: var(--line-height-tight);
 }
 
+/* Links */
 .datasets-table a {
     color: var(--color-primary);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .datasets-table a:hover {
     text-decoration: underline;
+}
+
+.new-tab-icon {
+    width: var(--font-size-sm);
+    height: var(--font-size-sm);
+    flex-shrink: 0;
+
+    /* Color Matching Trick */
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) drop-shadow(0 0 0 var(--color-primary));
 }
 
 .datasets-table td:last-child {

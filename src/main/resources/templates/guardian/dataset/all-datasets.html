@@ -33,23 +33,25 @@
         <div class="datasets-table-card">
             <table class="datasets-table">
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Health</th>
-                    <th>Submissions</th>
-                    <th>Last activity</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Health</th>
+                        <th>Submissions</th>
+                        <th>Last activity</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr th:each="dataset: ${all_datasets}">
-                    <td><a th:text="${dataset.name}" th:href="@{/guardian/dataset/detail/{id}(id=${dataset.id})}"></a>
-                    </td>
-                    <td><span class="dataset-type-pill" th:text="${dataset.fileType}"></span></td>
-                    <td><span class="dataset-health dataset-health-good">94</span></td>
-                    <td>24</td>
-                    <td>4 min ago</td>
-                </tr>
+                    <tr th:each="dataset: ${all_datasets}">
+                        <td>
+                            <a th:text="${dataset.name}" th:href="@{/guardian/dataset/detail/{id}(id=${dataset.id})}"></a>
+                            <img src="/images/icons/new-tab.png" alt="new-tab-icon" class="new-tab-icon">
+                        </td>
+                        <td><span class="dataset-type-pill" th:text="${dataset.fileType}"></span></td>
+                        <td><span class="dataset-health dataset-health-good">-</span></td>
+                        <td>-</td>
+                        <td th:text="${#temporals.format(dataset.updatedAt, 'MMM d, h:mm a')}" ></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

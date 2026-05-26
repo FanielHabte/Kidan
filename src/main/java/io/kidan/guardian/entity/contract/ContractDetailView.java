@@ -1,16 +1,15 @@
 package io.kidan.guardian.entity.contract;
 
 import io.kidan.guardian.entity.Contract;
-import io.kidan.guardian.entity.Dataset;
 import io.kidan.guardian.entity.ContractRule;
+import io.kidan.guardian.entity.Dataset;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Immutable;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-@Entity
-@Immutable
+//@Entity
+//@Immutable
 @Table(schema = "guardian", name = "v_contract_detail_summary")
 public class ContractDetailView implements Serializable {
     @Serial

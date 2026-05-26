@@ -1,7 +1,8 @@
 package io.kidan.guardian.controller;
 
-import io.kidan.guardian.dto.csv.CsvFormWrapper;
+import io.kidan.guardian.dto.csv.request.CsvFormWrapper;
 import io.kidan.guardian.entity.Dataset;
+import io.kidan.guardian.service.ContractRuleService;
 import io.kidan.guardian.service.ContractService;
 import io.kidan.guardian.service.special.FileStorageService;
 import jakarta.servlet.http.HttpSession;
@@ -16,15 +17,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ContractController {
 
     private final ContractService contractService;
+    private final ContractRuleService contractRuleService;
     private final FileStorageService fileStorageService;
     private final HttpSession session;
 
     ContractController(ContractService contractService
                         , FileStorageService fileStorageService
-                        , HttpSession session) {
+                        , HttpSession session
+                        , ContractRuleService contractRuleService) {
         this.contractService = contractService;
         this.fileStorageService = fileStorageService;
         this.session = session;
+        this.contractRuleService = contractRuleService;
     }
 
     @GetMapping("/guardian/contracts")
@@ -95,6 +99,7 @@ public class ContractController {
     public String getContractDetail(@PathVariable String id, Model model) {
         try {
             model.addAttribute("contract",contractService.findContractById(id));
+            model.addAttribute("csv_validation_objects", contractRuleService.findAllCsvValidationObjectsByContractId(id));
         }
         catch (Exception e) {
             model.addAttribute("error", e.getMessage());

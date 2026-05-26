@@ -38,7 +38,7 @@ public class Contract {
     }
 
     @PrePersist
-    private void setCreatedAt() {
+    private void onFirstCreation() {
         LocalDateTime localDateTime = LocalDateTime.now();
         this.createdAt = localDateTime;
         this.updatedAt = localDateTime;
@@ -47,7 +47,7 @@ public class Contract {
     }
 
     @PreUpdate
-    private void setUpdatedAt() {
+    private void onUpdate() {
         this.updatedAt = LocalDateTime.now();
         this.version = version + 1;
     }
