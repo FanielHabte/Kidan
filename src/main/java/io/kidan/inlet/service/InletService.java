@@ -7,6 +7,7 @@ import io.kidan.guardian.service.DatasetService;
 import io.kidan.inlet.entity.Submission;
 import io.kidan.inlet.repository.InletRepository;
 import io.kidan.nexus.entity.User;
+import io.kidan.spectra.service.PipelineObserver;
 import io.kidan.verity.dto.ValidationResult;
 import io.kidan.verity.enums.IssueType;
 import io.kidan.verity.service.VerityService;
@@ -26,13 +27,15 @@ public class InletService {
     private final DatasetService datasetService;
     private final FilesStorageService filesStorageService;
     private final VerityService verityService;
+    private final PipelineObserver pipelineObserver;
 
-    InletService(InletRepository inletRepository, UserAuthService userAuthService, DatasetService datasetService, FilesStorageService filesStorageService, VerityService verityService) {
+    InletService(InletRepository inletRepository, UserAuthService userAuthService, DatasetService datasetService, FilesStorageService filesStorageService, VerityService verityService, PipelineObserver pipelineObserver) {
         this.inletRepository = inletRepository;
         this.userAuthService = userAuthService;
         this.datasetService = datasetService;
         this.filesStorageService = filesStorageService;
         this.verityService = verityService;
+        this.pipelineObserver = pipelineObserver;
     }
 
     public List<Submission> findAllSubmissions() {
@@ -59,7 +62,9 @@ public class InletService {
         if (failedValidations == 0) {
             Submission mappedSubmission = createSubmission(submission, inputFile);
             inletRepository.save(mappedSubmission);
+            pipelineObserver.update(validationResultList, mappedSubmission);
         }
+
     }
 
     public Submission createSubmission(Submission submission, MultipartFile inputFile) {
