@@ -16,4 +16,6 @@ public interface ContractRepository extends JpaRepository <Contract, String> {
             "WHERE c.id = :id ")
     Optional<Contract> findByIdWithRulesAndCsvContracts (String id);
 
+    Contract findByDatasetId(String datasetId);
+
 }

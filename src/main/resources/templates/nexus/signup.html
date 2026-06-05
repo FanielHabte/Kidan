@@ -1,39 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Signup - Kidan</title>
-        <link rel="stylesheet" href="/style/nexus/signup.css">
-        <link rel="stylesheet" href="/style/fragments/header.css">
-    </head>
-    <body>
-        <div th:replace="~{fragments/reusable/header :: header-fragment}"> </div>
-        <div id="signup-body">
-            <div id="signup-header">
-                <h2> Ready to start your<br>data journey? </h2>
-                <p> Signup to Kidan and start handling <br>your dataset like a pro!</p>
-            </div>
-            <form id="signup-form" method="POST" th:action = "@{/signup/create-user}" th:object = "${newUser}">
-                <label>
-                    <span> Full name </span><br>
-                    <input type="text" placeholder="John Doe" th:field = "*{name}">
-                </label>
-                <label>
-                    <span> Email </span><br>
-                    <input type="email" placeholder="john_doe@gmail.com" th:field = "*{email}">
-                </label>
-                <label>
-                    <span> Password </span><br>
-                    <input type="password" placeholder="6 digit password" th:field = "*{password}">
-                </label>
-                <button type="submit"> Signup </button>
-            </form>
-            <fieldset id="signup-separator">
-                <legend> or </legend>
-            </fieldset>
-            <div id="signup-login-option">
-                <p> Already have an account? <a th:href="@{/login}"> Login </a> </p>
-            </div>
-        </div>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup - Kidan</title>
+    <link rel="stylesheet" href="/style/nexus/signup.css">
+    <link rel="stylesheet" href="/style/fragments/header.css">
+</head>
+<body>
+<div th:replace="~{fragments/reusable/header :: header-fragment}"></div>
+<div id="signup-body">
+
+    <div id="signup-header">
+        <h1>Ready to start your data journey?</h1>
+        <p>Sign up to Kidan and start handling your datasets like a pro</p>
+    </div>
+
+    <form id="signup-form" method="POST"
+          th:action="@{/signup/create-user}"
+          th:object="${newUser}">
+        <label for="signup-name">
+            <span>Full name</span>
+            <input id="signup-name" type="text" placeholder="John Doe" th:field="*{name}">
+        </label>
+        <label for="signup-email">
+            <span>Email</span>
+            <input id="signup-email" type="email" placeholder="john@example.com" th:field="*{email}">
+        </label>
+        <label for="signup-password">
+            <span>Password</span>
+            <input id="signup-password" type="password" placeholder="Enter your password" th:field="*{password}">
+        </label>
+        <button type="submit">Sign up</button>
+    </form>
+
+    <fieldset id="signup-separator">
+        <legend>or</legend>
+    </fieldset>
+
+    <div id="signup-login-option">
+        <p>Already have an account? <a th:href="@{/login}">Log in</a></p>
+    </div>
+
+</div>
+</body>
 </html>

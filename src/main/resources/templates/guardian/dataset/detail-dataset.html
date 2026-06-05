@@ -9,20 +9,26 @@
 <body>
 <div th:replace="~{fragments/reusable/navigation::header-nav-bar}"></div>
 <main class="dataset-detail-page">
-    <div th:if="${error != null}">
+
+    <!-- Error block: now has width class so it aligns with other sections -->
+    <div th:if="${error != null}" class="dd-error">
         <p th:text="${error.toString()}"></p>
     </div>
+
+    <!-- Breadcrumb: now has width + max-width via .page-depth rule -->
     <div class="page-depth">
         <p th:text="'Dataset / ' + ${requested_dataset.name}"></p>
     </div>
+
+    <!-- Header: h1 (was h2), buttons wrapped in .dd-header-actions for flex row -->
     <section class="dd-header">
         <div>
-            <h2 th:text="${requested_dataset.name}"></h2>
+            <h1 th:text="${requested_dataset.name}"></h1>
             <p th:text="${requested_dataset.fileType}"></p>
         </div>
-        <div>
+        <div class="dd-header-actions">
             <a th:href="@{/guardian/dataset/edit/{id}(id=${requested_dataset.id})}">Edit dataset</a>
-            <a>Submit file</a>
+            <a th:href="@{/inlet/submission/new}">Submit file</a>
         </div>
     </section>
 
@@ -52,8 +58,7 @@
             <h4>Health trend</h4>
             <p>Last 30 submissions</p>
         </div>
-        <div class="dd-visualization-chart">
-        </div>
+        <div class="dd-visualization-chart"></div>
     </section>
 
     <section class="dd-recent-submissions">
@@ -62,7 +67,7 @@
             <p>See all</p>
         </div>
         <div class="dd-recent-submission-list">
-            <div class="dd-recent-submission" th:each="submission : ${related_submissions} ">
+            <div class="dd-recent-submission" th:each="submission : ${related_submissions}">
                 <div class="dd-recent-submission-name-time">
                     <p th:text="${submission.fileName}">file name</p>
                     <p th:text="${submission.user.name} + ' - ' + ${#temporals.format(submission.createdAt, 'MMM d, h:mm a')}"></p>
@@ -72,6 +77,7 @@
             </div>
         </div>
     </section>
+
 </main>
 </body>
 </html>

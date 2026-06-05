@@ -1,5 +1,6 @@
 package io.kidan.inlet.controller;
 
+import com.opencsv.exceptions.CsvValidationException;
 import io.kidan.guardian.service.DatasetService;
 import io.kidan.inlet.entity.Submission;
 import io.kidan.inlet.service.FilesStorageService;
@@ -14,18 +15,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @Controller
 public class InletController {
 
     private final InletService inletService;
     private final DatasetService datasetService;
-    private final FilesStorageService filesStorageService;
 
     InletController(InletService inletService, DatasetService datasetService, FilesStorageService filesStorageService) {
         this.inletService = inletService;
         this.datasetService = datasetService;
-        this.filesStorageService = filesStorageService;
     }
 
     @GetMapping("/inlet/submissions")
@@ -49,12 +49,9 @@ public class InletController {
                                     RedirectAttributes redirectAttributes) {
         try {
             inletService.saveSubmission(submission, inputFile);
-            filesStorageService.saveFile(inputFile);
             return "redirect:/inlet/submissions";
-        }
-        catch (IOException e) {
-            redirectAttributes.addFlashAttribute("error",e.getMessage());
-            redirectAttributes.addFlashAttribute("new_submission", submission);
+        } catch (IOException | SQLException | CsvValidationException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "redirect:/inlet/submission/new";
         }
     }

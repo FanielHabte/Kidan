@@ -1,11 +1,14 @@
 package io.kidan.guardian.dto.csv.response;
 
+import io.kidan.guardian.enums.DataType;
 import io.kidan.guardian.enums.RuleType;
 
 public class DateContractRule extends CsvContractRule {
     private String formatType;
 
     public DateContractRule() {
+        this.setDataType(DataType.DATE);
+        this.setRuleType(RuleType.FORMAT_TYPE);
     }
 
     public String getFormatType() {
@@ -22,7 +25,12 @@ public class DateContractRule extends CsvContractRule {
     }
 
     @Override
-    public RuleType getRuleType() {
-        return RuleType.FORMAT_TYPE;
+    public void setRuleType(RuleType ruleType) {
+        super.setRuleType(RuleType.FORMAT_TYPE);
+    }
+
+    @Override
+    public void setDataType(DataType dataType) {
+        super.setDataType(DataType.DATE);
     }
 }

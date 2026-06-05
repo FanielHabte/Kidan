@@ -1,0 +1,88 @@
+﻿id,name,eia_alias,entity_type
+924,Associated Electric Cooperative Inc,AECI,BA
+20169,Avista Corporation,AVA,BA
+15399,Avangrid Renewables Llc,AVRN,BA
+803,Arizona Public Service Company,AZPS,BA
+16534,Balancing Authority Of Northern California,BANC,BA
+1738,Bonneville Power Administration,BPAT,BA
+3413,Public Utility District No 1 Of Chelan County,CHPD,BA
+2775,California Independent System Operator,CISO,BA
+3046,Duke Energy Progress East,CPLE,BA
+58786,Duke Energy Progress West,CPLW,BA
+56812,Arlington Valley Llc Avba,DEAA,BA
+5326,Pud No 1 Of Douglas County,DOPD,BA
+5416,Duke Energy Carolinas,DUK,BA
+5701,El Paso Electric Company,EPE,BA
+5723,Electric Reliability Council Of Texas Inc,ERCO,BA
+14610,Florida Municipal Power Pool,FMPP,BA
+6455,Duke Energy Florida Inc,FPC,BA
+6452,Florida Power & Light Company,FPL,BA
+14624,Public Utility District No 2 Of Grant County Washington,GCPD,BA
+58790,Gridforce Energy Management Llc,GRID,BA
+6909,Gainesville Regional Utilities,GVL,BA
+56365,Naturener Power Watch Llc (gwa),GWA,BA
+55372,New Harquahala Generating Company Llc Hgba,HGMA,BA
+8795,City Of Homestead,HST,BA
+9216,Imperial Irrigation District,IID,BA
+9191,Idaho Power Company,IPCO,BA
+13434,Iso New England Inc,ISNE,BA
+9617,Jea,JEA,BA
+11208,Los Angeles Department Of Water And Power,LDWP,BA
+11249,Louisville Gas And Electric Company And Kentucky Utilities,LGEE,BA
+56669,Midcontinent Independent Transmission System Operator Inc,MISO,BA
+13407,Nevada Power Company,NEVP,BA
+12825,Northwestern Energy (nwmt),NWMT,BA
+13501,New York Independent System Operator,NYIS,BA
+14379,Pacificorp East,PACE,BA
+14378,Pacificorp West,PACW,BA
+15248,Portland General Electric Company,PGE,BA
+14725,Pjm Interconnection Llc,PJM,BA
+15473,Public Service Company Of New Mexico,PNM,BA
+15466,Public Service Company Of Colorado,PSCO,BA
+15500,Puget Sound Energy,PSEI,BA
+17543,South Carolina Public Service Authority,SC,BA
+16868,Seattle City Light,SCL,BA
+21554,Seminole Electric Cooperative,SEC,BA
+29304,Southeastern Power Administration,SEPA,BA
+18195,Southern Company Services Inc Trans,SOCO,BA
+17716,Southwestern Power Administration,SPA,BA
+16572,Salt River Project,SRP,BA
+59504,Southwest Power Pool,SWPP,BA
+18445,City Of Tallahassee,TAL,BA
+18454,Tampa Electric Company,TEC,BA
+24211,Tucson Electric Power Company,TEPC,BA
+19281,Turlock Irrigation District,TIDC,BA
+18429,City Of Tacoma Department Of Public Utilities Light Division,TPWR,BA
+18642,Tennessee Valley Authority,TVA,BA
+28503,Western Area Power Administration Rocky Mountain Region,WACM,BA
+25471,Western Area Power Administration Desert Southwest Region,WALC,BA
+19610,Western Area Power Administration Ugp West,WAUW,BA
+58791,Naturener Wind Watch Llc,WWA,BA
+317,Alcoa Power Generating Inc Yadkin Division,YAD,BA
+1,New Brunswick System Operator,,INTERNATIONAL
+,California,CAL,Region
+,Carolinas,CAR,Region
+,Central,CENT,Region
+,Florida,FLA,Region
+,Midatlantic,MIDA,Region
+,Midwest,MIDW,Region
+,New England,NE,Region
+,Northwest,NW,Region
+,New York,NY,Region
+,Southeast,SE,Region
+,Southwest,SW,Region
+,Tennessee,TEN,Region
+,Texas,TEX,Region
+,United States Lower 48,US48,Region
+13485,New Smyrna Beach Utilities Commission Of,,UNMATCHED
+56545,Gridforce South,,UNMATCHED
+189,Powersouth Energy Cooperative,,UNMATCHED
+14015,Ohio Valley Electric Corporation,,UNMATCHED
+56090,Griffith Energy Llc,,UNMATCHED
+,Dominion Energy South Carolina Inc,SCEG,UNMATCHED
+,Sikeston Board Of Municipal Utilities,SIKE,UNMATCHED
+5748,Electric Energy Inc,,UTILITY ONLY
+3522,Chugach Electric Assn Inc,,UTILITY ONLY
+17539,South Carolina Electric & Gas Company,,UTILITY ONLY
+19547,Hawaiian Electric Co Inc,,UTILITY ONLY
+14412,Gila River Power Llc,,UTILITY ONLY

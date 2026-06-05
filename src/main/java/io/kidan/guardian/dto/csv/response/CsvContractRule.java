@@ -2,20 +2,30 @@ package io.kidan.guardian.dto.csv.response;
 
 import io.kidan.guardian.enums.DataType;
 import io.kidan.guardian.enums.RuleType;
+import io.kidan.verity.validations.csv.CsvFileValidation;
 
-public abstract class  CsvContractRule {
+public abstract class  CsvContractRule  {
     private String columnName;
     private RuleType ruleType;
     private DataType dataType;
     private boolean isUnique;
     private boolean isRequired;
+    private CsvFileValidation csvFileValidation;
 
-    public RuleType getRuleType() {
-        return ruleType;
+    public void setCsvFileValidation(CsvFileValidation csvFileValidation) {
+        this.csvFileValidation = csvFileValidation;
+    }
+
+    public String performCsvFileValidation() {
+        return csvFileValidation.buildValidationQuery(this);
     }
 
     public void setRuleType(RuleType ruleType) {
         this.ruleType = ruleType;
+    }
+
+    public RuleType getRuleType() {
+        return this.ruleType;
     }
 
     public String getColumnName() {
@@ -50,22 +60,5 @@ public abstract class  CsvContractRule {
         this.isRequired = isRequired;
     }
 
-    public boolean isUnique() {
-        return isUnique;
-    }
-
-    public void setUnique(boolean unique) {
-        isUnique = unique;
-    }
-
-    public boolean isRequired() {
-        return isRequired;
-    }
-
-    public void setRequired(boolean required) {
-        isRequired = required;
-    }
-
     public abstract String getCustomRuleConfig();
-
 }

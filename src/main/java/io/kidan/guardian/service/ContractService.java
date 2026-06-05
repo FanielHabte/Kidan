@@ -36,6 +36,10 @@ public class ContractService {
         return contractRepository.findAllById(ids);
     }
 
+    public Contract findContractByDatasetId(String datasetId){
+        return contractRepository.findByDatasetId(datasetId);
+    }
+
     public List<Contract> findAllContracts() {
         return contractRepository.findAll();
     }

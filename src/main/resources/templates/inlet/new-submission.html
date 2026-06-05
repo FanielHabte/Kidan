@@ -8,21 +8,28 @@
     <link rel="stylesheet" href="/style/inlet/new-submission.css">
 </head>
 <body>
+<main class="submission-page-container">
     <div th:replace="~{fragments/reusable/navigation :: header-nav-bar}"></div>
-    <div>
+    <section class="submission-container">
+
         <div class="page-depth">
-            <p>Submission / New</p>
+            <p>/ Submissions / New</p>
         </div>
+
         <div class="submission-header">
             <h1>New submission</h1>
+            <a class="submission-button" th:href="@{/inlet/submissions}">Back to submissions</a>
         </div>
-        <div th:if="${error}">
+
+        <div th:if="${error}" class="submission-error">
             <p th:text="${error}"></p>
         </div>
-        <form class="submission-container" method="POST"
+
+        <form method="POST"
               th:action="@{/inlet/submission/new/file/upload}"
               enctype="multipart/form-data"
               th:object="${new_submission}">
+
             <div class="choos-resources">
                 <label class="select-contract" for="contract">
                     <span>Dataset</span>
@@ -38,26 +45,32 @@
                     </div>
                 </label>
             </div>
-            <div>
-                <label class="file-upload" for="upload-file">
+
+            <div class="file-upload">
+                <label for="upload-file">
                     <span>File</span>
-                    <div class="file-upload-wrapper">
-                        <input id="upload-file" type="file" name="file">
-                        <button>Remove</button>
-                    </div>
                 </label>
+                <div class="file-upload-wrapper">
+                    <input id="upload-file" type="file" name="file">
+                    <button type="button">Remove</button>
+                </div>
             </div>
+
             <div class="enable-qa">
                 <p>Options</p>
                 <label class="enable-qa-wrapper" for="enable-qa">
                     <input id="enable-qa" type="checkbox" th:field="*{qaEnabled}">
-                    <span>Enable natural language Q&A for this file</span>
+                    <span>Enable natural language Q&amp;A for this file</span>
                 </label>
             </div>
-            <button type="submit">Validate & Submit</button>
-        </form>
-    </div>
 
+            <div class="form-actions">
+                <button type="submit">Validate &amp; Submit</button>
+            </div>
+
+        </form>
+    </section>
+</main>
 </body>
 <script th:src="@{script/submission-page.js}"></script>
 </html>

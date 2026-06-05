@@ -16,7 +16,7 @@ body * {
 .dataset-detail-page {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-xl);
     width: 80%;
     min-height: 100vh;
@@ -35,6 +35,34 @@ body * {
     margin: 0;
 }
 
+/* add after the existing .page-depth rule */
+.page-depth {
+    width: 100%;
+}
+
+/* add after the existing .dd-header a rule */
+.dd-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+/* error block — same width contract as all sections */
+.dd-error {
+    width: 100%;
+}
+
+.dd-error p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: #9b2c2c;
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
 /* Header */
 .dd-header {
     display: flex;
@@ -42,7 +70,6 @@ body * {
     align-items: center;
     gap: var(--spacing-lg);
     width: 100%;
-    max-width: 800px;
 }
 
 .dd-header > div {
@@ -114,7 +141,6 @@ body * {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--spacing-md);
     width: 100%;
-    max-width: 800px;
 }
 
 .dd-kpis > div {
@@ -151,7 +177,6 @@ body * {
 .dd-visualization,
 .dd-recent-submissions {
     width: 100%;
-    max-width: 800px;
     background-color: var(--color-bg-base);
     border: 1px solid var(--color-border-light);
     border-radius: var(--radius-lg);

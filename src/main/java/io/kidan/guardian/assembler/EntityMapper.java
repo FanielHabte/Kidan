@@ -68,6 +68,7 @@ public class EntityMapper {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
                 .create();
+
         return gson.fromJson(contractRule.getRuleConfig(), CsvContractRule.class);
     }
 

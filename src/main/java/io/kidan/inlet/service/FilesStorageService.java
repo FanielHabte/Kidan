@@ -15,9 +15,11 @@ public class FilesStorageService {
 
     FilesStorageService() {}
 
-    public void saveFile (MultipartFile inputFile) throws IOException {
+    public String saveFile (MultipartFile inputFile) throws IOException {
+        String filePath = getFileDetails(inputFile).get("filePath");
+        inputFile.transferTo(new File(filePath));
 
-        inputFile.transferTo(new File(path + inputFile.getOriginalFilename()));
+        return filePath;
     }
 
     public HashMap<String, String> getFileDetails (MultipartFile inputFile) {

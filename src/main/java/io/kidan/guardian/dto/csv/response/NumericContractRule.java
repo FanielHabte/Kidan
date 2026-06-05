@@ -1,5 +1,6 @@
 package io.kidan.guardian.dto.csv.response;
 
+import io.kidan.guardian.enums.DataType;
 import io.kidan.guardian.enums.RuleType;
 
 public class NumericContractRule extends CsvContractRule {
@@ -7,6 +8,8 @@ public class NumericContractRule extends CsvContractRule {
     private double max;
 
     public NumericContractRule() {
+        this.setDataType(DataType.INT);
+        this.setRuleType(RuleType.RANGE);
     }
 
     public double getMin() {
@@ -31,8 +34,12 @@ public class NumericContractRule extends CsvContractRule {
     }
 
     @Override
-    public RuleType getRuleType() {
-        return RuleType.RANGE;
+    public void setRuleType(RuleType ruleType) {
+        super.setRuleType(RuleType.RANGE);
     }
 
+    @Override
+    public void setDataType(DataType dataType) {
+        super.setDataType(DataType.INT);
+    }
 }
