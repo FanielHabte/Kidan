@@ -1,12 +1,14 @@
 package io.kidan.guardian.entity;
 
 import io.kidan.guardian.enums.FileType;
+import io.kidan.inlet.entity.Submission;
 import io.kidan.nexus.entity.User;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table (catalog = "kidan", schema = "guardian",
@@ -34,6 +36,8 @@ public class Dataset implements Serializable {
     private LocalDateTime createdAt;
     @Column (nullable = false)
     private LocalDateTime updatedAt;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dataset")
+    private List<Submission> submissionList;
 
     public Dataset() {
     }
@@ -117,5 +121,13 @@ public class Dataset implements Serializable {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Submission> getSubmissionList() {
+        return submissionList;
+    }
+
+    public void setSubmissionList(List<Submission> submissionList) {
+        this.submissionList = submissionList;
     }
 }

@@ -10,4 +10,5 @@ public interface PiplineRepository extends JpaRepository<PipelineRun, String> {
 
     @Override @NonNull
     <S extends PipelineRun> S save(@NonNull S entity);
+
 }

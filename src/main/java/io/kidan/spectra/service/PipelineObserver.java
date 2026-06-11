@@ -32,7 +32,13 @@ public class PipelineObserver {
                 .stream()
                 .filter(validationResult -> validationResult.getIssueType().equals(IssueType.NONE))
                 .count();
-        int healthScore = failedValidations / validationResultList.size();
+        int healthScore;
+        if (failedValidations == 0){
+            healthScore = 100;
+        }
+        else {
+            healthScore = Math.round((float) failedValidations * 100 / validationResultList.size());
+        }
 
         pipelineRun.setFailedCount(failedValidations);
         pipelineRun.setPassedCount(passedValidations);

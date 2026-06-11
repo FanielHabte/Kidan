@@ -5,6 +5,7 @@ import io.kidan.fortress.service.UserAuthService;
 import io.kidan.guardian.entity.Dataset;
 import io.kidan.guardian.service.DatasetService;
 import io.kidan.inlet.entity.Submission;
+import io.kidan.inlet.enums.SubmissionStatus;
 import io.kidan.inlet.repository.InletRepository;
 import io.kidan.nexus.entity.User;
 import io.kidan.spectra.service.PipelineObserver;
@@ -59,15 +60,20 @@ public class InletService {
                 .stream()
                 .filter(validationResult -> !validationResult.getIssueType().equals(IssueType.NONE))
                 .count();
+
+        Submission mappedSubmission;
         if (failedValidations == 0) {
-            Submission mappedSubmission = createSubmission(submission, inputFile);
-            inletRepository.save(mappedSubmission);
-            pipelineObserver.update(validationResultList, mappedSubmission);
+            mappedSubmission = createSubmission(submission, inputFile, SubmissionStatus.PASSED);
         }
+        else {
+            mappedSubmission = createSubmission(submission, inputFile, SubmissionStatus.FAILED);
+        }
+        inletRepository.save(mappedSubmission);
+        pipelineObserver.update(validationResultList, mappedSubmission);
 
     }
 
-    public Submission createSubmission(Submission submission, MultipartFile inputFile) {
+    public Submission createSubmission(Submission submission, MultipartFile inputFile, SubmissionStatus submissionStatus) {
         HashMap<String, String> fileDetails = filesStorageService.getFileDetails(inputFile);
         User user = userAuthService.AuthenticatedUser().orElseThrow(
                 () -> new RuntimeException("User not found")
@@ -78,6 +84,7 @@ public class InletService {
         submission.setFileName(fileDetails.get("fileName"));
         submission.setFilePath(fileDetails.get("filePath"));
         submission.setUser(user);
+        submission.setStatus(submissionStatus);
 
         return submission;
     }

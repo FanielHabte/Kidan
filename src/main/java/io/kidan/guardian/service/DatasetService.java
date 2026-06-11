@@ -25,7 +25,7 @@ public class DatasetService {
                                 () -> new UsernameNotFoundException(
                                         "Authenticated User not found"
                         )).getId();
-        return datasetRepository.findAllByUserId(userId);
+        return datasetRepository.findDatasetWithSubmissionsByUserId(userId);
     }
 
     public Dataset findDatasetById(String id) throws RuntimeException {

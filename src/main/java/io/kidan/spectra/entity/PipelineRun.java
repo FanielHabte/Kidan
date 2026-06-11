@@ -15,7 +15,7 @@ public class PipelineRun {
 
     @Id @GeneratedValue (strategy = GenerationType.UUID)
     private String id;
-    @ManyToOne @JoinColumn (name = "submission_id", nullable = false)
+    @OneToOne @JoinColumn (name = "submission_id", nullable = false)
     private Submission submission;
     @Column (nullable = false)
     private int healthScore;

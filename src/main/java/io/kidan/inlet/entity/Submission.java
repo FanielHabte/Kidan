@@ -2,6 +2,7 @@ package io.kidan.inlet.entity;
 
 import io.kidan.guardian.entity.Dataset;
 import io.kidan.nexus.entity.User;
+import io.kidan.spectra.entity.PipelineRun;
 import jakarta.persistence.*;
 import io.kidan.inlet.enums.SubmissionStatus;
 
@@ -33,14 +34,23 @@ public class Submission {
     private boolean isActive;
     @Column (nullable = false)
     private LocalDateTime createdAt;
+    @OneToOne(mappedBy = "submission")
+    private PipelineRun pipelineRun;
 
     public Submission() {}
+
+    public PipelineRun getPipelineRun() {
+        return pipelineRun;
+    }
+
+    public void setPipelineRun(PipelineRun pipelineRun) {
+        this.pipelineRun = pipelineRun;
+    }
 
     @PrePersist
     public void setCreatedAt() {
         this.createdAt = LocalDateTime.now();
-        this.isActive = true;
-        this.status = SubmissionStatus.PASSED;
+        this.isActive = this.status.equals(SubmissionStatus.PASSED);
     }
 
     public String getId() {
